@@ -91,6 +91,7 @@ jekyll_rdf:
         "http://xmlns.com/foaf/0.1/Project" : "project.html"
         "http://sda.tech/Partner" : "partners.html"
         "http://sda.tech/Job" : "job.html"
+        "http://sda.tech/ArchivedJob" : "jobArch.html"
         "http://sda.tech/Course" : "teaching.html"
         "http://xmlns.com/foaf/0.1/Document" : "page.html"
     instance_template_mappings:
@@ -122,13 +123,10 @@ jekyll_rdf:
         "http://sda.tech/Project/archivedprojects" : "projectArchived.html"
         "http://sda.tech/Project/incubatorprojects" : "projectIncubator.html"
         #Jobs
-        "http://sda.tech/job" : "jobmain.html"
-        "http://sda.tech/Job/akadimischerrat" : "akadJob.html"
-        "http://sda.tech/Job/postdoctoral" : "postdocJob.html"
-        "http://sda.tech/Job/phdposition" : "researchAssocJob.html"
-        "http://sda.tech/Job/studentassistant" : "studentAssistantJob.html"
-        "http://sda.tech/Job/environment" : "EnvoirnmentJob.html"
-        "http://sda.tech/Job/frequentlyaskedquestions" : "FAQJob.html"
+        "http://sda.tech/jobs" : "jobmain.html"
+        "http://sda.tech/jobs/archived" : "jobArchived.html"
+        "http://sda.tech/jobs/environment" : "EnvoirnmentJob.html"
+        "http://sda.tech/jobs/frequentlyaskedquestions" : "FAQJob.html"
         #teaching
         "http://sda.tech/teaching" : "teachingmain.html"
         "http://sda.tech/Course/generalguidelines" : "teachingCourseGuidelines.html"

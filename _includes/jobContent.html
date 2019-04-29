@@ -1,32 +1,41 @@
-{% capture query %} SELECT ?akadJob ?title ?desc ?req ?offer ?expect ?exp WHERE{
-?akadJob a foaf:Document . ?akadJob rdfs:label ?title . ?akadJob ex:description ?desc . ?akadJob sda:requirements ?req . ?akadJob sda:expected ?expect . ?akadJob sda:experience ?exp . ?akadJob sda:offer ?offer .} {% endcapture %} {% assign akadset = page.rdf | sparql_query: query %}
+{% capture query %} SELECT ?akadJob ?title ?img ?desc ?req ?offer ?expect ?exp WHERE{
+?akadJob a sdatech:Job . ?akadJob dct:title ?title . ?akadJob rdfs:label ?label . ?akadJob foaf:depiction ?img . ?akadJob ex:longDescription ?desc .} {% endcapture %} {% assign akadset = page.rdf | sparql_query: query %}
+
+{% capture query %} SELECT ?akadJob ?title ?img ?desc ?req ?offer ?expect ?exp WHERE{
+?akadJob a sdatech:ArchivedJob . ?akadJob dct:title ?title . ?akadJob rdfs:label ?label . ?akadJob foaf:depiction ?img . ?akadJob ex:longDescription ?desc .} {% endcapture %} {% assign akadset2 = page.rdf | sparql_query: query %}
 
 <div class="job-contents content-people">
-  <div class="jobDescription" id="open" style="{% if include.active == 'openJobs' %}display:block{% else %}display:none{% endif %}">
-    {% capture query %} SELECT ?jobs ?title ?desc ?label WHERE{
-?jobs a sdatech:Job . ?jobs dct:title ?title . ?jobs ex:description ?desc . ?jobs rdfs:label ?label } {% endcapture %} {% assign resultset = page.rdf | sparql_query: query %}
-{% for result in resultset %}{% assign url= result.jobs | remove: "http://sda.tech/" %}
-{% capture job %}{{result.label}}{% endcapture %}
-{% for result2 in akadset %}{% capture akadtitle %}{{result2.title}}{% endcapture %}{% if akadtitle == job %}{% capture externDesc %}{{result2.desc}}{% endcapture %}{% endif %}{% endfor %}
+  <div class="jobDescription" id="open" style="{% if include.active == 'openJobs' %}display:inline-block{% else %}display:none{% endif %}">
+{% for result in akadset %}{% assign url= result.akadJob | remove: "http://sda.tech/" %}
+<div class="jobCard">
 <h2 style="text-align:center;"><a href="/{{url}}">{{result.title}}</a></h2>
-<br class="horizontal-separator" />
-<div class="shortDescJob">{% capture descOffer %}{{result.desc}}{% endcapture %}
-  <p>{% if descOffer == "undefined" %}{{externDesc}}{% else %}{{descOffer}}{% endif %}</p>
+<br class="horizontal-separator" />{% capture desc %}{{result.desc}}{% endcapture %}{% if desc != 'undefined' %}
+<div class="shortDescJob">
+  <div class="image">
+    <img style="width: 200px;" src="{{result.img}}"></img>
+  </div>
+  <p>{{desc}}</p>
+</div>{% endif %}
 </div>
 {% endfor %}
   </div>
-  <div class="jobDescription" id="akRat" style="{% if include.active == 'akadRat' %}display:block{% else %}display:none{% endif %}">
-    {% include jobType0.html %}
+
+<div class="jobDescription" id="archived" style="{% if include.active == 'archivedJobs' %}display:inline-block{% else %}display:none{% endif %}">
+{% for result in akadset2 %}{% assign url= result.akadJob | remove: "http://sda.tech/" %}
+<div class="jobCard">
+<h2 style="text-align:center;"><a href="/{{url}}">{{result.title}}</a></h2>
+<br class="horizontal-separator" />{% capture desc %}{{result.desc}}{% endcapture %}{% if desc != 'undefined' %}
+<div class="shortDescJob">
+  <div class="image">
+    <img style="width: 200px;" src="{{result.img}}"></img>
   </div>
-  <div class="jobDescription" id="posDoc" style="{% if include.active == 'postDoc' %}display:block{% else %}display:none{% endif %}">
-    {% include jobType1.html %}
+  <p>{{desc}}</p>
+</div>{% endif %}
+</div>
+{% endfor %}
   </div>
-  <div class="jobDescription" id="phJob" style="{% if include.active == 'researchAss' %}display:block{% else %}display:none{% endif %}">
-    {% include jobType2.html %}
-  </div>
-  <div class="jobDescription" id="saJob" style="{% if include.active == 'studentAss' %}display:block{% else %}display:none{% endif %}">
-    {% include jobType3.html %}
-  </div>
+
+
   <div class="jobDescription" id="jobEnv" style="{% if include.active == 'envJob' %}display:block{% else %}display:none{% endif %}">
     {% include jobEnvoirnment.html %}
   </div>

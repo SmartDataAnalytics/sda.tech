@@ -1,0 +1,23 @@
+---
+rdf_prefix_path: sda.tech.pref
+layout: default
+toggleOnDiv: openJobs
+toggledURLTo: /jobs/archived
+navigationdiv: Jobs
+---
+
+<script>
+setTitle('Archived Jobs', '{{site.title | escape}}');
+deactivateHeader();
+activateHeader('{{page.navigationdiv}}');
+</script>
+
+{%include toggleJobTypes.html%}
+{% include toggleInitialPageLink.html div=page.toggleOnDiv linkto=page.toggledURLTo %}
+<div class="borderAll">
+  <article class="post">
+    {%include jobHeader.html active="archivedJobs"%}
+    {%include jobContent.html active="archivedJobs"%}
+      <br class="horizontal-separator" />
+  </article>
+</div>

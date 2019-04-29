@@ -992,6 +992,57 @@ hr {
 }
 
 // Job
+.jobCard {
+  background-color: #FFFFFF;
+  width: 100%;
+  min-height: 300px;
+  margin-bottom: 48px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 4px;
+  padding: 20px;
+  border: 1px solid #EEEEEE;
+  position: relative;
+  float: left;
+  /*display: inline-flex;*/
+  box-shadow: 0 0 1px 0 rgba(224, 224, 224, 1.0);
+
+  .groupAbstract{
+    text-align: left;
+    color: black;
+    margin-left: 24px;
+  }
+
+  a {
+      color: $purple-sda-color;
+
+    &:hover {
+      text-decoration: none;
+      color: $blue-sda-color;
+    }
+  }
+
+  .chip {
+      border: 1px solid #E0E0E0;
+      -webkit-box-shadow: 0 0 0 0 #e0e0e0;
+  	   -moz-box-shadow: 0 0 0 0  #e0e0e0;
+  	  box-shadow: 0 0 0 0 #e0e0e0;
+  }
+
+  .chip:hover {
+    //background-color: #EEEEEE;
+    -webkit-box-shadow: 0 0 0 0 #e0e0e0;
+    -moz-box-shadow: 0 0 0 0 #e0e0e0;
+    box-shadow: 0 0 0 0 #e0e0e0;
+
+    a {
+      text-decoration: none;
+      color: $blue-sda-color;
+    }
+  }
+
+}
+
 .job-contents, .course-guide-main{
   text-align: left;
   h3 {
@@ -1043,6 +1094,7 @@ hr {
 
 .jobDescription, .course-desc{
   padding: 40px;
+  width: 100%;
 }
 
 .jobRef {
