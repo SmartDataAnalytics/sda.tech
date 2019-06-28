@@ -1,0 +1,27 @@
+---
+rdf_prefix_path: sda.tech.pref
+layout: default
+navigationdiv: Thesis
+---
+
+<script>
+setTitle('Bachelor Theses', '{{site.title | escape}}');
+deactivateHeader();
+activateHeader('{{page.navigationdiv}}');
+</script>
+
+{% include toggleThesisTypes.html %}
+{% include toggleBachelorThesis.html %}
+{% include toggleMasterThesis.html %}
+{% include thesisQuerries.html %}
+{% assign totalNumber=openBachelorsThesis.size | plus:archivedBachelorsThesis.size %}
+<!-- Presentation of thesis Items  -->
+<div class="borderAll">
+  <article class="post">
+    <!--Thesis Header  -->
+    {% include thesisHeader.html active="Bachelor Thesis" total=totalNumber %}
+    <!--Thesis Contetnt Types  -->
+    {% include thesisContent.html active="bachelor" %}
+  </article>
+  {% include thesisFooter.html %}
+</div>

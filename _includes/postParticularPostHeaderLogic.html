@@ -1,0 +1,55 @@
+<!-- Query for Paper Notifications -->
+{% capture query %} SELECT ?paper ?papername Where {
+    <{{page.rdf}}> a sdatech:PaperNotification . ?paper dct:title ?papername . } {% endcapture %}
+{% assign papernotifications = page.rdf | sparql_query: query %}
+
+{% if papernotifications.size != 0 %}
+  {% include blogHeader.html active="Paper Notifications" total=paperNotificationsArray.size %}
+  {% assign list = paperNotificationsArray %}
+{% endif %}
+
+<!-- Query for Invited Talks -->
+{% capture query %} SELECT ?paper ?papername Where {
+    <{{page.rdf}}> a sdatech:InvitedTalks . ?paper dct:title ?papername . } {% endcapture %}
+{% assign invitedtalks = page.rdf | sparql_query: query %}
+
+{% if invitedtalks.size != 0 %}
+  {% include blogHeader.html active="Invited Talks" total=invitedTalksArray.size %}
+  {% assign list = invitedTalksArray %}
+{% endif %}
+
+<!-- Query for Project Announcements -->
+{% capture query %} SELECT ?paper ?papername Where {
+    <{{page.rdf}}> a sdatech:ProjectAnnouncements . ?paper dct:title ?papername . } {% endcapture %}
+{% assign projectannouncements = page.rdf | sparql_query: query %}
+
+{% if projectannouncements.size != 0 %}
+  {% include blogHeader.html active="Project Announcements" total=projectAnnouncementsArray.size %}
+  {% assign list = projectAnnouncementsArray %}
+{% endif %}
+
+<!-- Query for General Posts -->
+{% capture query %} SELECT ?paper ?papername Where {
+    <{{page.rdf}}> a sdatech:GeneralPosts . ?paper dct:title ?papername . } {% endcapture %}
+{% assign generalposts = page.rdf | sparql_query: query %}
+
+{% if generalposts.size != 0 %}
+  {% include blogHeader.html active="General Posts" total=generalPostsArray.size %}
+  {% assign list = generalPostsArray %}
+{% endif %}
+
+{% assign i = 0 %}
+{% for items in list %}
+  {% capture titleInListAll %}{{items.title}}{% endcapture %}
+  {% assign titleInListAll = titleInListAll | strip %}
+
+  {% if titleInListAll == title %}
+    {% assign indexPrevious = i | minus: 1 %}
+    {% assign indexNext = i | plus:1  %}
+  {% endif %}
+  {% assign i = i | plus:1 %}
+{% endfor %}
+{% capture previousTitle %}{{list[indexPrevious].title}}{% endcapture %}
+{% assign previousUrl = list[indexPrevious].blog | remove: "http://sda.tech/" %}
+{% capture nextTitle %}{{list[indexNext].title}}{% endcapture %}
+{% assign nextUrl = list[indexNext].blog | remove: "http://sda.tech/" %}

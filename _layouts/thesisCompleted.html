@@ -1,0 +1,27 @@
+---
+rdf_prefix_path: sda.tech.pref
+layout: default
+navigationdiv: Thesis
+---
+
+<script>
+setTitle('Completed Theses', '{{site.title | escape}}');
+deactivateHeader();
+activateHeader('{{page.navigationdiv}}');
+</script>
+
+{% include toggleThesisTypes.html %}
+{% include toggleBachelorThesis.html %}
+{% include toggleMasterThesis.html %}
+{% include thesisQuerries.html %}
+
+<!-- Presentation of Completed Thesis Items  -->
+<div class="borderAll">
+  <article class="post">
+    <!--Thesis Header  -->
+    {% include thesisHeader.html active="Completed Thesis" total=archivedThesisList.size %}
+    <!--Thesis Contetnt Types  -->
+    {% include thesisContent.html active="completed" %}
+  </article>
+  {% include thesisFooter.html %}
+</div>

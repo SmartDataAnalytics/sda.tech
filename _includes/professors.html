@@ -1,13 +1,24 @@
 <div class="cardProfile">
-  <a href="../../{{include.urlp}}"><h4>{{include.title}} {{include.firstname}} {{include.name}} </h4></a>
+  {% if include.fromAll == 1 %}
+    <a  onclick="setBoolFromAllToDetailPerson('true', '../../{{include.urlp}}' )" class="aOnTitle"><h4 class="personFullTitle">{{include.title}} {{include.firstname}} {{include.name}} </h4></a>
+  {% endif %}
+  {% if include.fromAll != 1 %}
+    <a href="../../{{include.urlp}}" class="aOnTitle"><h4 class="personFullTitle">{{include.title}} {{include.firstname}} {{include.name}} </h4></a>
+  {% endif %}
   <img src="{{include.image}}" alt="{{include.name}}" >
   <hr/>
   <br/>
   <div class="containerProfile">
     <p class="titleProfile">{{include.status}}</p>
     <div style="margin: 24px 0;">
-      <a href="{{include.website}}" target="_blank"><i class="fa fa-globe"></i></a>
-      <a href="{{include.linkedin}}" target="_blank"><i class="fa fa-linkedin"></i></a>
+      {% capture query %} SELECT ?person ?profilepage WHERE { ?person sda:profilepage ?profilepage . ?person foaf:name "{{include.pname}}" .}  {% endcapture %}{% assign profiles = page.rdf | sparql_query: query %}
+      {% for profile in profiles  %}
+        {% capture query %} SELECT ?buttonname WHERE { <{{profile.profilepage}}> a schema:ProfilePage .  <{{profile.profilepage}}> ex:buttonLabel ?buttonname .}  {% endcapture %}{% assign profiledetails = page.rdf | sparql_query: query %}
+        {% for pdetail in profiledetails  %}
+          {% if buttonname == "homepage" %}<a href="{{profile.profilepage}}"  target="_blank"><i class="fa fa-globe" aria-hidden="true"></i></a>{% endif %}
+          {% if buttonname == "linkedin"  %}<a href="{{profile.profilepage}}"  target="_blank"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>{% endif %}
+        {% endfor %}
+      {% endfor %}
       <a href="mailto:{{include.mailto | remove: 'mailto' | encode_email }}" target="_blank"><i class="fa fa-envelope-o"></i></a>
    </div>
   </div>

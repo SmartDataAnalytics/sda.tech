@@ -10,13 +10,20 @@ deactivateHeader();
 activateHeader('{{page.navigationdiv}}');
 </script>
 
+{% include teachingQuerries.html %}
+
+
 <div class="borderAll">
   <article class="post">
     <div class="pagination">
       <!-- Teaching Header -->
       {% include teachingHeader.html active="Teaching" %}
+    </div>
+    <div class="">
       <!-- Teaching Content -->
       {% include teachingContent.html active="courseguide" %}
     </div>
   </article>
+  <div class="pagination-footer">
+  </div>
 </div>

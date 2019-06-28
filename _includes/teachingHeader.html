@@ -36,6 +36,7 @@ SELECT ?position WHERE{
                     {% else %}
                      {{result2.label}}
                   {% endif %}
+                  <span style="color:red; font-weight:bolder; font-size:x-small; vertical-align:top;">{{include.total}}</span>
                 </a>
             {% endif %}
         {% endfor %}
@@ -45,4 +46,3 @@ SELECT ?position WHERE{
   <br/>
   <br/>
   <hr/>
-  <br class="horizontal-separator2" />

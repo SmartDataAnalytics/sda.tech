@@ -1,15 +1,25 @@
 <div class="thesis-items content-people clear-padding">
   <div id="allThesis" style="{% if include.active == 'Thesis' %}display:block{% else %}display:none{% endif %}">
-    <br/><br/>
     <div id="openTheses" style="display:block">
-      <!--QUERY for all open Thesis  -->
-      {% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
-       ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:openThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openThesis = page.rdf | sparql_query: query %}
        <!-- Presentation for all Open Thesis  -->
-       {% for thesis in openThesis %}
-          {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
-        {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
-       {% endfor %}
+       {% if openTheses.size != 0 %}
+         <div class="content-title">
+           <h2>Thesis</h2>
+         </div>
+         {% for thesis in openThesis %}
+            {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
+          {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
+         {% endfor %}
+      {% else %}
+        <div class="content-title">
+          <h2>Thesis</h2>
+        </div>
+        <div class="content-empty">
+          <!--Folder Image From(folder.png): https://www.flaticon.com/free-icon/folder_148963#term=folder&page=1&position=32  -->
+          <img src="/assets/images/extras/folder.png" alt=""><br>
+          <p>Currently there are no <strong>Thesis</strong> to show.</p>
+        </div>
+      {% endif %}
     </div>
   </div>
 
@@ -20,26 +30,45 @@
         <span class="slider round" onclick="switchBachelorThesis();"></span>
       </label>
     </div>
-    <br/><br/>
     <div id="openBachelorsTheses" style="display:block">
-      <!--QUERY for open Bachelor Thesis  -->
-      {% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
-       ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:openThesis . ?thesis a sdatech:bachelorThesis .  ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openBachelorsThesis = page.rdf | sparql_query: query %}
-       <!-- Presentation for Open Bachelor Thesis  -->
-       {% for thesis in openBachelorsThesis %}
-          {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
-        {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
-       {% endfor %}
+       {% if openBachelorsThesis.size != 0 %}
+         <div class="content-title">
+           <h2>Available Bachelor Thesis</h2>
+         </div>
+         <!-- Presentation for Open Bachelor Thesis  -->
+         {% for thesis in openBachelorsThesis %}
+            {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
+          {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
+         {% endfor %}
+        {% else %}
+          <div class="content-title">
+            <h2>Available Bachelor Thesis</h2>
+          </div>
+          <div class="content-empty">
+            <img src="/assets/images/extras/folder.png" alt=""><br>
+            <p>Currently there are no <strong>Available Bachelor Thesis</strong> to show.</p>
+          </div>
+        {% endif %}
     </div>
     <div id="archivedBachelorThesis" style="display:none">
-      <!--QUERY for archived Bachelor Thesis  -->
-      {% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
-       ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:archivedThesis . ?thesis a sdatech:bachelorThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign archivedBachelorsThesis = page.rdf | sparql_query: query %}
-       <!-- PRESENTATION for ARCHIVED BACHELOR THESIS -->
-       {% for thesis in archivedBachelorsThesis %}
-          {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
-        {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
-       {% endfor %}
+      {% if archivedBachelorsThesis.size != 0 %}
+        <div class="content-title">
+          <h2>Completed Bachelor Thesis</h2>
+        </div>
+         <!-- PRESENTATION for ARCHIVED BACHELOR THESIS -->
+         {% for thesis in archivedBachelorsThesis %}
+            {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
+          {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
+         {% endfor %}
+      {% else %}
+        <div class="content-title">
+          <h2>Completed Bachelor Thesis</h2>
+        </div>
+        <div class="content-empty">
+          <img src="/assets/images/extras/folder.png" alt=""><br>
+          <p>Currently there are no <strong>Completed Bachelor Thesis</strong> to show.</p>
+        </div>
+      {% endif %}
     </div>
   </div>
   <div id="openThesis" style="{% if include.active == 'master' %}display:block{% else %}display:none{% endif %}">
@@ -49,38 +78,105 @@
         <span class="slider round" onclick="switchMasterThesis();"></span>
       </label>
     </div>
-    <br/><br/>
     <div id="openMasterTheses" style="display:block">
-      <!--QUERY for open Master Thesis  -->
-      {% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
-       ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:openThesis . ?thesis a sdatech:masterThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openMasterThesis = page.rdf | sparql_query: query %}
-       <!--PRESENTATION Of open Master Thesis  -->
-       {% for thesis in openMasterThesis %}
-          {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
-        {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
-       {% endfor %}
+      {% if openMasterThesis.size != 0 %}
+          <div class="content-title">
+            <h2>Available Master Thesis</h2>
+          </div>
+         <!--PRESENTATION Of open Master Thesis  -->
+         {% for thesis in openMasterThesis %}
+            {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
+          {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
+         {% endfor %}
+      {% else %}
+        <div class="content-title">
+          <h2>Available Master Thesis</h2>
+        </div>
+        <div class="content-empty">
+          <img src="/assets/images/extras/folder.png" alt=""><br>
+          <p>Currently there are no <strong>Available Master Thesis</strong> to show.</p>
+        </div>
+      {% endif %}
     </div>
     <div id="archivedMasterThesis" style="display:none">
-      <!--QUERY for archived Master Thesis  -->
-      {% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
-       ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:archivedThesis . ?thesis a sdatech:masterThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign archivedMasterThesis = page.rdf | sparql_query: query %}
-      <!--PRESENTATION Of Archived Master Thesis  -->
-      {% for thesis in archivedMasterThesis %}
-         {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
-       {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
-      {% endfor %}
+      {% if archivedMasterThesis.size != 0 %}
+        <div class="content-title">
+          <h2>Completed Master Thesis</h2>
+        </div>
+        <!--PRESENTATION Of Archived Master Thesis  -->
+        {% for thesis in archivedMasterThesis %}
+           {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
+         {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
+        {% endfor %}
+      {% else %}
+        <div class="content-title">
+          <h2>Completed Master Thesis</h2>
+        </div>
+        <div class="content-empty">
+          <img src="/assets/images/extras/folder.png" alt=""><br>
+          <p>Currently there are no <strong>Completed Master Thesis</strong> to show.</p>
+        </div>
+      {% endif %}
     </div>
   </div>
   <div id="finishedThesis" style="{% if include.active == 'ongoing' %}display:block{% else %}display:none{% endif %}">
-      <!-- QUERY for OnGoingThesis  -->
-      {% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
-       ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:ongoingThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openOngoingThesis = page.rdf | sparql_query: query %}
-       <!--PRESENTATION Of OnGoing Thesis  -->
-       {% for thesis in openOngoingThesis %}
-          {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
-        {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
-       {% endfor %}
+      {% if openOngoingThesis.size != 0 %}
+          <div class="content-title">
+            <h2>On Going Thesis</h2>
+          </div>
+         <!--PRESENTATION Of OnGoing Thesis  -->
+         {% for thesis in openOngoingThesis %}
+            {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
+          {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
+         {% endfor %}
+      {% else %}
+          <div class="content-title">
+            <h2>On Going Thesis</h2>
+          </div>
+          <div class="content-empty">
+            <img src="/assets/images/extras/folder.png" alt=""><br>
+            <p>Currently there are no <strong>On Going Thesis</strong> to show.</p>
+          </div>
+      {% endif %}
+  </div>
+  <div id="compltedThesisContent" style="{% if include.active == 'completed' %}display:block{% else %}display:none{% endif %}">
+    <div class="completedThesis">
+      {% if archivedThesisList.size != 0  %}
+          <div class="content-title">
+            <h2>Completed Thesis</h2>
+          </div>
+         <!--PRESENTATION Of OnGoing Thesis  -->
+         {% for thesis in archivedThesisList %}
+           {% capture thesisTitle %}{{thesis.thesisTitle}}{% endcapture %}
+           {% include  thesisItem.html title=thesisTitle href=thesis.link language=thesis.language description=thesis.abstract personList=personsInThesis %}
+         {% endfor %}
+      {% else %}
+          <div class="content-title">
+            <h2>Completed Thesis</h2>
+          </div>
+          <div class="content-empty">
+            <img src="/assets/images/extras/folder.png" alt=""><br>
+            <p>Currently there are no <strong>Completed Thesis</strong> to show.</p>
+          </div>
+      {% endif %}
+    </div>
   </div>
   <div id="faqThesisContent" style="{% if include.active == 'faq' %}display:block{% else %}display:none{% endif %}">
+    <div class="">
+      <div class="content-title">
+        <h2>Frequently Asked Thesis Questions</h2>
+      </div>
+      <div class="faqThesis">
+        <p class="faq-question"><strong>Q.</strong>Is there possibility to come up with a thesis topic of students choice?</p>
+        <p>The Smart Data Analytics group is always looking for good students to write theses. The topics can be in one of the following broad areas:</p>
+        {% for group in groups %} {% assign url= group.group | remove: "http://sda.tech/" %} {% capture imageClass %}{{group.imageclass}}{% endcapture %} {% capture name %}{{group.description}}{% endcapture %} {% capture longdescription %}{{group.longdescription}}{% endcapture %}  {% capture leader %}{{group.leadername}}{% endcapture %} {% assign
+        image=imageClass | append:' fa-1x' %}
+        <ul style="list-style:none;">
+          <li><a href="../../{{url}}"><i class="{{image}}"></i> {{group.description}}</a></li>
+        </ul>
+        {% endfor %}
+        <p>Please note that the list presented in Bachelor and Master Thesis tabs is small. Please contact us to discuss further, to find new topics, or to suggest a topic of your own.</p>
+      </div>
+    </div>
   </div>
 </div>

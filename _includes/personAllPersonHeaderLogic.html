@@ -1,0 +1,15 @@
+{% assign completeList = professorsArray | concat: seniorResearchersArray | concat: phdStudentsArray | concat: associateResearchersArray | concat: studentAssistantsArray | concat: interneesArray %}
+{% include peopleHeader.html active ="People" total=completeList.size %}
+{% assign x = 0 %}
+{% for items in completeList %}
+  {% capture nameInListAll %}{{items.pname}}{% endcapture %}
+  {% if nameInListAll == pname %}
+    {% assign indexPreviousAll = x | minus: 1 %}
+    {% assign indexNextAll = x | plus:1  %}
+  {% endif %}
+  {% assign x = x | plus:1 %}
+{% endfor %}
+{% capture previousTitleAll %}{{completeList[indexPreviousAll].pname}}{% endcapture %}
+{% assign previousUrlAll = completeList[indexPreviousAll].Person | remove: "http://sda.tech/" %}
+{% capture nextTitleAll %}{{completeList[indexNextAll].pname}}{% endcapture %}
+{% assign nextUrlAll = completeList[indexNextAll].Person | remove: "http://sda.tech/" %}

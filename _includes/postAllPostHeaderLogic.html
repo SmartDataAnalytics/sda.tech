@@ -1,0 +1,18 @@
+{% assign completeList = blogposts %}
+{% include blogHeader.html active="Blog"%}
+
+{% assign x = 0 %}
+{% for items in completeList %}
+  {% capture titleInListAll %}{{items.title}}{% endcapture %}
+  {% assign titleInListAll = titleInListAll | strip %}
+
+  {% if titleInListAll == title %}
+    {% assign indexPreviousAll = x | minus: 1 %}
+    {% assign indexNextAll = x | plus:1  %}
+  {% endif %}
+  {% assign x = x | plus:1 %}
+{% endfor %}
+{% capture previousTitleAll %}{{completeList[indexPreviousAll].title}}{% endcapture %}
+{% assign previousUrlAll = completeList[indexPreviousAll].blog | remove: "http://sda.tech/" %}
+{% capture nextTitleAll %}{{completeList[indexNextAll].title}}{% endcapture %}
+{% assign nextUrlAll = completeList[indexNextAll].blog | remove: "http://sda.tech/" %}

@@ -1,0 +1,27 @@
+---
+rdf_prefix_path: sda.tech.pref
+layout: default
+navigationdiv: Thesis
+---
+
+<script>
+setTitle('FAQ Thesis', '{{site.title | escape}}');
+deactivateHeader();
+activateHeader('{{page.navigationdiv}}');
+</script>
+
+{% include toggleThesisTypes.html %}
+{% include toggleBachelorThesis.html %}
+{% include toggleMasterThesis.html %}
+{% include thesisQuerries.html %}
+
+<!-- Presentation of thesis Items  -->
+<div class="borderAll">
+  <article class="post">
+    <!--Thesis Header  -->
+    {% include thesisHeader.html active="FAQ Thesis" %}
+    <!--Thesis Contetnt Types  -->
+    {% include thesisContent.html active="faq" %}
+  </article>
+  {% include thesisFooter.html %}
+</div>

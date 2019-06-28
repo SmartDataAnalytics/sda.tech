@@ -40,6 +40,7 @@ SELECT ?position WHERE{
                   {% else %}
                     {{result2.label}}
                   {% endif %}
+                  <span style="color:red; font-weight:bolder; font-size:x-small; vertical-align:top;">{{include.total}}</span>
                 </a>
                 {% if navlabel == "PhD Students"%}
                   <br class="breakpoint-pagination"/><br class="breakpoint-pagination" />

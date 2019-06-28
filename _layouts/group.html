@@ -46,17 +46,16 @@ activateHeader('{{page.navigationdiv}}');
           <br/>
           <hr class="ruleh" /></div>
         <div class="content-people">
-          <div class="post-content">
-            <div class="container groupLink">
-              <br class="horizontal-separator" />
-              <h2 style="text-align:center;"><i class="{{ page.rdf | rdf_property: 'sda:imageclass'}}"></i> {{ page.rdf | rdf_property: 'rdfs:label'}}</h2>
-              <br class="horizontal-separator2" />
-              <div class="description-project">
+          <div class="content-title">
+            <h2>{{ page.rdf | rdf_property: 'rdfs:label'}}</h2>
+          </div>
+          <div class="groupContent">
+            <div class="groupLink">
+              <div class="description-project paddingBottom56px">
                 <p>{{ page.rdf | rdf_property: 'dct:description'}}</p>
               </div>
-              <br class="horizontal-separator" />
-              <div class="members-projects">
-                <h4>Leaders</h4>
+              <div class="members-projects paddingBottom56px">
+                <h4 class="h4Font">Leaders</h4>
                 <div class="membersofProject">
                   {% for result in resultset3 %} {% assign url= result.leader | remove: "http://sda.tech/" %}
                   <!-- <img src="{{result.image}}" style="width:48px;height:48px;border-radius:50%;display:block;margin:0 auto;">
@@ -69,9 +68,8 @@ activateHeader('{{page.navigationdiv}}');
                   {% endfor %}
                 </div>
               </div>
-              <br class="horizontal-separator2" />
-                <h4>Members</h4>
-                <div class="membersofProject">
+                <h4 class="h4Font">Members</h4>
+                <div class="membersofProject paddingBottom56px">
                   {% capture groupMainTitle %}{{title}}{% endcapture %}
                   {% capture query %} SELECT ?person ?personname ?image ?group ?groupname Where {
                     ?person a foaf:Person . OPTIONAL { ?person foaf:name ?personname } . OPTIONAL { ?person foaf:depiction ?image } .  ?person sda:group ?group . ?group  rdfs:label ?groupname .
@@ -87,10 +85,8 @@ activateHeader('{{page.navigationdiv}}');
                     {% endif %}
                   {% endfor %}
                 </div>
-                <br class="horizontal-separator" />
-                <br class="horizontal-separator2" />
-                <h4>Projects</h4>
-                <div class="partnersOfProject">
+                <h4 class="h4Font">Projects</h4>
+                <div class="partnersOfProject paddingBottom56px">
                   {% for result in resultset1 %} {% assign url= result.projects | remove: "http://sda.tech/" %}
                   <div class="chip">
                     <img class="img-circle-small" src="{{result.image}}" width="96" height="96">
@@ -98,15 +94,10 @@ activateHeader('{{page.navigationdiv}}');
                   </div>
                   {% endfor %}
                 </div>
-              <br class="horizontal-separator2" />
-              <br class="horizontal-separator" />
-              <h4>Publications</h4>
-              {% for result4 in resultset4 %}
-                {% include pubEntry.html link=result4.link date=result4.date publisher=result4.publisher title=result4.title  %}
-              {% endfor %}
-              <br class="horizontal-separator" />
             </div>
           </div>
+        </div>
+        <div class="pagination-footer">
         </div>
     </article>
   </div>

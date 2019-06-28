@@ -1,48 +1,29 @@
- <!-- GET  querry for Professors -->
-{% capture query %} SELECT ?Person ?name ?fname ?title ?status ?room ?linkedin ?website ?mailto ?image WHERE{ ?Person a foaf:Person . ?Person a sdatech:professor . ?Person foaf:familyName ?name . ?Person foaf:status ?status . ?Person foaf:mbox ?mailto . ?Person foaf:depiction ?image .
-    ?Person foaf:firstName ?fname . ?Person foaf:title ?title . OPTIONAL {?Person sda:website ?website} . OPTIONAL {?Person sda:linkedin ?linkedin} .} {% endcapture %} {% assign professorsArray = page.rdf | sparql_query: query %}
- <!--GET querry for Senior Researchers  -->
-{% capture query %} SELECT ?Person ?name ?fname ?title ?status ?room ?linkedin ?website ?mailto ?image WHERE{ ?Person a foaf:Person . ?Person a sdatech:seniorResearcher . OPTIONAL { ?Person foaf:familyName ?name } . OPTIONAL { ?Person foaf:status ?status } . OPTIONAL { ?Person foaf:mbox ?mailto } . OPTIONAL { ?Person foaf:depiction ?image } .
-OPTIONAL { ?Person foaf:firstName ?fname } . OPTIONAL { ?Person foaf:title ?title } . OPTIONAL { ?Person sda:website ?website } . OPTIONAL { ?Person sda:linkedin ?linkedin } .} {% endcapture %} {% assign seniorResearchersArray = page.rdf | sparql_query: query %}
-<!--GET querry for Phd Setudents  -->
-  {% capture query %} SELECT ?Person ?name ?fname ?title ?status ?room ?linkedin ?website ?mailto ?image WHERE{ ?Person a foaf:Person . ?Person a sdatech:phdStudent . OPTIONAL { ?Person foaf:familyName ?name } . OPTIONAL { ?Person foaf:status ?status } . OPTIONAL {?Person foaf:mbox ?mailto } . OPTIONAL {?Person foaf:depiction ?image } .
-  OPTIONAL {?Person foaf:firstName ?fname } . OPTIONAL { ?Person foaf:title ?title } . OPTIONAL {?Person sda:website ?website } . OPTIONAL { ?Person sda:linkedin ?linkedin } .} {% endcapture %} {% assign phdStudentsArray = page.rdf | sparql_query: query %}
-<!--Get querry for Associate Researchers  -->
-  {% capture query %} SELECT ?Person ?name ?fname ?title ?status ?room ?linkedin ?website ?mailto ?image WHERE{ ?Person a foaf:Person . ?Person a sdatech:associateReseracher . OPTIONAL { ?Person foaf:familyName ?name } . OPTIONAL { ?Person foaf:status ?status } . OPTIONAL {?Person foaf:mbox ?mailto } . OPTIONAL {?Person foaf:depiction ?image } .
-  OPTIONAL {?Person foaf:firstName ?fname } . OPTIONAL { ?Person foaf:title ?title } . OPTIONAL {?Person sda:website ?website } . OPTIONAL { ?Person sda:linkedin ?linkedin } .} {% endcapture %} {% assign associateResearchersArray = page.rdf | sparql_query: query %}
-<!--GET querry for Student Assistants  -->
-  {% capture query %} SELECT ?Person ?name ?fname ?title ?status ?room ?linkedin ?website ?mailto ?image WHERE{ ?Person a foaf:Person . ?Person a sdatech:studentAssistant . OPTIONAL { ?Person foaf:familyName ?name } . OPTIONAL { ?Person foaf:status ?status } . OPTIONAL {?Person foaf:mbox ?mailto } . OPTIONAL {?Person foaf:depiction ?image } .
-  OPTIONAL {?Person foaf:firstName ?fname } . OPTIONAL { ?Person foaf:title ?title } . OPTIONAL {?Person sda:website ?website } . OPTIONAL { ?Person sda:linkedin ?linkedin } .} {% endcapture %} {% assign studentAssistantsArray = page.rdf | sparql_query: query %}
-<!--GET querry for Internees -->
-  {% capture query %} SELECT ?Person ?name ?fname ?title ?status ?room ?linkedin ?website ?mailto ?image WHERE{ ?Person a foaf:Person . ?Person a sdatech:intern . OPTIONAL { ?Person foaf:familyName ?name } . OPTIONAL { ?Person foaf:status ?status } . OPTIONAL {?Person foaf:mbox ?mailto } . OPTIONAL {?Person foaf:depiction ?image } .
-  OPTIONAL {?Person foaf:firstName ?fname } . OPTIONAL { ?Person foaf:title ?title } . OPTIONAL {?Person sda:website ?website } . OPTIONAL { ?Person sda:linkedin ?linkedin } .} {% endcapture %} {% assign interneesArray = page.rdf | sparql_query: query %}
-<!--GET querry for Former Students  -->
-  {% capture query %} SELECT ?Person ?name ?fname ?title ?status ?room ?linkedin ?website ?mailto ?image WHERE{ ?Person a foaf:Person . ?Person a sdatech:formerMember . OPTIONAL { ?Person foaf:familyName ?name } . OPTIONAL { ?Person foaf:status ?status } . OPTIONAL {?Person foaf:mbox ?mailto } . OPTIONAL {?Person foaf:depiction ?image } .
-OPTIONAL {?Person foaf:firstName ?fname } . OPTIONAL { ?Person foaf:title ?title } . OPTIONAL {?Person sda:website ?website } . OPTIONAL { ?Person sda:linkedin ?linkedin } .} {% endcapture %} {% assign formerMembersArray = page.rdf | sparql_query: query %}
-
-
 <div id="All" style="{% if include.active == 'All' %}display:inline-block{% else %}display:none{% endif %}" class="positioning-cards">
   {% for result in professorsArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
-  image=result.image %} {% endfor %}
+  image=result.image fromAll=1 %} {% endfor %}
   {% for result in seniorResearchersArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
-  image=result.image %}{% endfor %}
+  image=result.image fromAll=1 %}{% endfor %}
   {% for result in phdStudentsArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
-  image=result.image %}{% endfor %}
+  image=result.image fromAll=1 %}{% endfor %}
   {% for result in associateResearchersArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
-  image=result.image %} {% endfor %}
+  image=result.image fromAll=1 %} {% endfor %}
   {% for result in studentAssistantsArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
-  image=result.image %} {% endfor %}
+  image=result.image fromAll=1 %} {% endfor %}
   {% for result in interneesArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
-  image=result.image %} {% endfor %}
+  image=result.image fromAll=1 %} {% endfor %}
   <!-- {% for result in formerMembersArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
   image=result.image %} {% endfor %} -->
+
 </div>
 <div id="Prof" style="{% if include.active == 'Prof' %}display:inline-block{% else %}display:none{% endif %}" class="positioning-cards">
   <!-- Displaying Results for Professors -->
-<div>
-  {% for result in professorsArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
+  {% for result in professorsArray %}
+  {% assign url = result.Person | remove: "http://sda.tech/" %}
+  {% capture pName %}{{professorsArray.pname}}{% endcapture %}
+  {% include professors.html name=result.name pname=pName  firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
   image=result.image %} {% endfor %}
-</div>
+
+
 </div>
 <div id="SeniorResch" style="{% if include.active == 'SeniorResch' %}display:inline-block{% else %}display:none{% endif %}" class="positioning-cards">
   <!-- Displaying Results for Senior Researchers  -->
@@ -74,4 +55,3 @@ OPTIONAL {?Person foaf:firstName ?fname } . OPTIONAL { ?Person foaf:title ?title
   {% for result in formerMembersArray %} {% assign url = result.Person | remove: "http://sda.tech/" %} {% include professors.html name=result.name firstname=result.fname title=result.title urlp=url status=result.status room=result.room linkedin=result.linkedin website=result.website mailto=result.mailto
   image=result.image %} {% endfor %}
 </div>
-<br/><br/>

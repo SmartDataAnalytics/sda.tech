@@ -4,12 +4,10 @@ rdf_prefix_path: sda.tech.pref
 navigationdiv: Blog
 ---
 
-{% capture title %} {{ page.rdf | rdf_property: 'sioc:topic' }}{% endcapture %}
+{% capture title %}{{ page.rdf | rdf_property: 'sioc:topic' }}{% endcapture %}
 {% assign title = title | strip %}
 
-<script>
-setTitle('{{title}}', '{{site.title | escape}}');
-</script>
+{% include postHeaderActivation.html %}
 
 {% capture depiction %} {{ page.rdf | rdf_property: 'foaf:depiction' }} {% endcapture %}
 {% capture creator %} {{ page.rdf | rdf_property: 'dct:creator' }} {% endcapture %}
@@ -17,16 +15,50 @@ setTitle('{{title}}', '{{site.title | escape}}');
 {% capture content %} {{ page.rdf | rdf_property: 'sioc:content' }} {% endcapture %}
 {% assign person= creator | remove: " http://sda.tech/Person/" %}
 
+{% include blogQuerries.html %}
+
 <div class="borderAll">
+  <div class="pagination">
+    <!-- Toggle Button Item -->
+    {% include toggleMenu.html type = "oneRow" id="posttoggleicon" %}
+
+    <div id="allPostHeader" style="display:none;">
+      {% include postAllPostHeaderLogic.html %}
+    </div>
+    <div id="particularPostHeader" style="display:block;">
+      {% include postParticularPostHeaderLogic.html %}
+    </div>
+  </div>
   <article class="post">
       <div class="post-content">
-        <div class="postentry">
-          <p><font size="5">{{title}}</font></p>
-          <div class="postmetadata">&#128467; {{date}} &nbsp;&nbsp; &#x270D; {{person}}</div>
-          <br/>
-          <p><img src="{{depiction}}" style="float:left;height:180px;width:230px;padding:30px;">{{content}}</p>
-          <br/><hr style="text-align:center;">
+        <div class="view-table">
+          <div class="view-row" id="postTableRow">
+            <div id="postSecondaryNav" class="secondary-nav" style="display:none;">
+              <div id="secondaryNavPostAll" style="display:none;">
+                {% include secondaryNavPost.html listItems=completeList status='all' name=title fromAll=1 %}
+              </div>
+              <div id="secondaryNavParticularPost" style="display:none;">
+                {% include secondaryNavPost.html listItems=list name=title %}
+              </div>
+            </div>
+            <div class="postentry" id="post" >
+              <p><font size="5">{{title}}</font></p>
+              <div class="postmetadata">&#128467; {{date}} &nbsp;&nbsp; &#x270D; {{person}}</div>
+              <br/>
+              <p><img src="{{depiction}}" style="float:left;height:180px;width:230px;padding:30px;">{{content}}</p>
+              <br/>
+            </div>
+          </div>
         </div>
       </div>
   </article>
+  <div class="footer-wraper">
+    <div id="footer-allPost" style="display:none;">
+      {% include blogFooter.html name=title previousPerson=previousTitleAll previousUrl=previousUrlAll nextPerson=nextTitleAll nextUrl=nextUrlAll fromAll=1 %}
+    </div>
+    <div id="footer-particularPost" style="display:none;">
+      {% include blogFooter.html name=title previousPerson=previousTitle previousUrl=previousUrl nextPerson=nextTitle nextUrl=nextUrl  %}
+    </div>
+  </div>
 </div>
+<div id="snackbar3">Please wait the page is loading</div>

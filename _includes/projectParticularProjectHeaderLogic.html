@@ -1,0 +1,53 @@
+<!-- Query For Funded Projects -->
+{% capture query %} SELECT ?project ?projectname Where {
+    <{{page.rdf}}> a sdatech:fundedProject . ?project rdfs:label ?projectname . } {% endcapture %}
+{% assign fundedprojects = page.rdf | sparql_query: query %}
+
+{% if fundedprojects.size != 0 %}
+  {% include projectHeader.html active="Funded Projects" total=fundprojects.size %}
+  {% assign list = fundprojects %}
+{% endif %}
+
+<!--Query for Open source Projects  -->
+{% capture query %} SELECT ?project ?projectname Where {
+    <{{page.rdf}}> a sdatech:openSourceProject . ?project rdfs:label ?projectname . } {% endcapture %}
+{% assign opensourceprojects = page.rdf | sparql_query: query %}
+
+{% if opensourceprojects.size != 0 %}
+  {% include projectHeader.html active="Open Source Projects" total=opensource.size %}
+  {% assign list = opensource %}
+{% endif %}
+
+<!--Query for Incubator Projects  -->
+{% capture query %} SELECT ?project ?projectname Where {
+    <{{page.rdf}}> a sdatech:incubatorProject . ?project rdfs:label ?projectname . } {% endcapture %}
+{% assign incubatorprojects = page.rdf | sparql_query: query %}
+
+{% if incubatorprojects.size != 0 %}
+  {% include projectHeader.html active="Incubator Projects" total=incubators.size %}
+  {% assign list = incubators %}
+{% endif %}
+
+<!--Query for Archived Projects  -->
+{% capture query %} SELECT ?project ?projectname Where {
+    <{{page.rdf}}> a sdatech:archivedProject . ?project rdfs:label ?projectname . } {% endcapture %}
+{% assign archivedprojects = page.rdf | sparql_query: query %}
+
+{% if archivedprojects.size != 0 %}
+  {% include projectHeader.html active="Archived Projects" total=archiveds.size %}
+  {% assign list = archiveds %}
+{% endif %}
+
+{% assign i = 0 %}
+{% for items in list %}
+  {% capture nameInList %}{{items.title}}{% endcapture %}
+  {% if nameInList == title %}
+    {% assign indexPrevious = i | minus:1 %}
+    {% assign indexNext = i | plus:1  %}
+  {% endif %}
+  {% assign i = i | plus:1 %}
+{% endfor %}
+{% capture previousTitle %}{{list[indexPrevious].title}}{% endcapture %}
+{% assign previousUrl = list[indexPrevious].project | remove: "http://sda.tech/" %}
+{% capture nextTitle %}{{list[indexNext].title}}{% endcapture %}
+{% assign nextUrl = list[indexNext].project | remove: "http://sda.tech/" %}

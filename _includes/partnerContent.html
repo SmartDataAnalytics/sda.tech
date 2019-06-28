@@ -1,26 +1,57 @@
 <div id="allPartners" style="{% if include.active == 'all' %}display:block{% else %}display:none{% endif %}">
-  <!-- QUERRY to GET ALL the PARTNERS -->
-  {% capture query %} SELECT ?partners ?title ?description ?image ?homepage WHERE{ ?partners a sdatech:Partner . OPTIONAL { ?partners rdfs:label ?title } . OPTIONAL { ?partners dct:abstract ?description } . OPTIONAL { ?partners foaf:depiction ?image }
-  . OPTIONAL { ?partners foaf:homepage ?homepage } . } ORDER BY ASC(?title) {% endcapture %} {% assign partnersArray = page.rdf | sparql_query: query %} {% assign length = partners | size %}
   <!--Presenting ALL the PARTNERS  -->
-  {% assign mainCount = 1 %} {% for partner in partnersArray %}{% capture partnerName %}{{partner.title}}{% endcapture %}{% if mainCount != length %} {% include partnerItem.html title=partner.title partnerId=partner.partners image=partner.image description=partner.description last=0 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% else %} {% include partnerItem.html
-  title=partner.title partnerId=partner.partners image=partner.image description=partner.description last=1 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% endif %} {% assign mainCount = mainCount | plus:1 %} {% endfor %}
+  {% if partnersArray.size != 0 %}
+    <div class="content-title">
+      <h2>Partners</h2>
+    </div>
+    {% assign mainCount = 1 %} {% for partner in partnersArray %}{% capture partnerName %}{{partner.title}}{% endcapture %}{% if mainCount != length - 1  %} {% include partnerItem.html title=partner.title partnerId=partner.partners image=partner.image description=partner.description last=0 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% else %} {% include partnerItem.html
+    title=partner.title partnerId=partner.partners image=partner.image description=partner.description last=1 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% endif %} {% assign mainCount = mainCount | plus:1 %} {% endfor %}
+  {% else %}
+    <div class="content-title">
+      <h2>Partners</h2>
+    </div>
+    <div class="content-empty">
+      <!-- Folder Image From (folder.png): https://www.flaticon.com/free-icon/folder_148963#term=folder&page=1&position=32 -->
+      <img src="/assets/images/extras/folder.png" alt=""><br>
+      <p>Currently there are no <strong>Partners</strong> to show.</p>
+    </div>
+  {% endif %}
 </div>
 <div id="industryPartners" style="{% if include.active == 'industry' %}display:block{% else %}display:none{% endif %}">
-  <!-- QUERRY to GET the INDUSTRY PARTNERS -->
-  {% capture query %} SELECT ?partners ?title ?description ?image ?homepage WHERE{ ?partners a sdatech:Partner . ?partners a sdatech:industryPartner . ?partners foaf:name ?title . ?partners dct:abstract ?description . ?partners foaf:depiction ?image
-  . ?partners foaf:homepage ?homepage . } {% endcapture %} {% assign partners = page.rdf | sparql_query: query %} {% assign length = partners | size %}
-  <!--Presenting ALL the INDUSTRY PARTNERS  -->
-  {% assign mainCount = 1 %} {% for partner in partners %}{% capture partnerName %}{{partner.title}}{% endcapture %}{% if mainCount != length %} {% include partnerItem.html title=partner.title image=partner.image description=partner.description last=0 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% else %} {% include partnerItem.html
-  title=partner.title image=partner.image description=partner.description last=1 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% endif %} {% assign mainCount = mainCount | plus:1 %} {% endfor %}
+  {% if industryPartnersArray.size != 0 %}
+    <!--Presenting ALL the INDUSTRY PARTNERS  -->
+    <div class="content-title">
+      <h2>Industry Partners</h2>
+    </div>
+    {% assign mainCount = 1 %} {% for partner in partners %}{% capture partnerName %}{{partner.title}}{% endcapture %}{% if mainCount != length - 1 %} {% include partnerItem.html title=partner.title image=partner.image description=partner.description last=0 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% else %} {% include partnerItem.html
+    title=partner.title image=partner.image description=partner.description last=1 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% endif %} {% assign mainCount = mainCount | plus:1 %} {% endfor %}
+  {% else %}
+    <div class="content-title">
+      <h2>Industry Partners</h2>
+    </div>
+    <div class="content-empty">
+      <img src="/assets/images/extras/folder.png" alt=""><br>
+      <p>Currently there are no <strong>Industy Partners</strong> to show.</p>
+    </div>
+  {% endif %}
 </div>
 <div id="academicPartners" style="{% if include.active == 'academic' %}display:block{% else %}display:none{% endif %}">
-  <!-- QUERRY to GET ALL the ACADMEIC PARTNERS -->
-  {% capture query %} SELECT ?partners ?title ?description ?image ?homepage WHERE{ ?partners a sdatech:Partner . ?partners a sdatech:academicPartner . ?partners foaf:name ?title . ?partners dct:abstract ?description . ?partners foaf:depiction ?image
-  . ?partners foaf:homepage ?homepage . } {% endcapture %} {% assign partners = page.rdf | sparql_query: query %} {% assign length = partners | size %}
   <!--Presenting ALL the ACADEMIC PARTNERS  -->
-  {% assign mainCount = 1 %} {% for partner in partners %}{% capture partnerName %}{{partner.title}}{% endcapture %}{% if mainCount != length %}
-  {% include partnerItem.html title=partner.title image=partner.image description=partner.description last=0 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% else %}
-  {% include partnerItem.html
-  title=partner.title image=partner.image description=partner.description last=1 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% endif %} {% assign mainCount = mainCount | plus:1 %} {% endfor %}
+  {% if academicPartnersArray.size != 0 %}
+    <div class="content-title">
+      <h2>Academic Partners</h2>
+    </div>
+    {% assign mainCount = 1 %} {% for partner in partners %}{% capture partnerName %}{{partner.title}}{% endcapture %}{% if mainCount != length - 1 %}
+    {% include partnerItem.html title=partner.title image=partner.image description=partner.description last=0 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% else %}
+    {% include partnerItem.html
+    title=partner.title image=partner.image description=partner.description last=1 href=partner.homepage projectList=partnersWithProjects name=partnerName %} {% endif %} {% assign mainCount = mainCount | plus:1 %} {% endfor %}
+  {% else %}
+    <div class="content-title">
+      <h2>Academic Partners</h2>
+    </div>
+    <div class="content-empty">
+      <img src="/assets/images/extras/folder.png" alt=""><br>
+      <p>Currently there are no <strong>Academic Partners</strong> to show.</p>
+    </div>
+  {% endif %}
 </div>

@@ -1,0 +1,19 @@
+<!-- QUERRY to GET ALL the PROJECTS -->
+{% capture query %} SELECT ?project ?title ?description ?longdescription ?image ?homepage ?twitter ?source ?download WHERE{ ?project a foaf:Project . ?project rdfs:label ?title . ?project ex:description ?description . optional {?project ex:longdescription ?longdescription }
+ optional {?project foaf:depiction ?image } optional { ?project foaf:homepage ?homepage } optional {?project sda:twitter ?twitter } optional {?project sda:source ?source } optional { ?project sda:download ?download } } {% endcapture %} {% assign allProjects = page.rdf | sparql_query: query %}
+ <!-- QUERRY to GET the FundedProjects -->
+ {% capture query %} SELECT ?project ?title ?description ?longdescription ?image ?homepage ?twitter ?source ?download WHERE{ ?project a foaf:Project . ?project a sdatech:fundedProject . ?project rdfs:label ?title . ?project ex:description ?description
+ . optional {?project foaf:depiction ?image } optional { ?project foaf:homepage ?homepage } optional {?project sda:twitter ?twitter } optional {?project ex:source ?source } optional { ?project ex:download ?download }  } {% endcapture %} {% assign fundprojects
+ = page.rdf | sparql_query: query %}
+ <!-- QUERRY to GET the OpenSource Projects -->
+ {% capture query %} SELECT ?project ?title ?description ?longdescription ?image ?homepage ?twitter ?source ?download WHERE{ ?project a foaf:Project . ?project a sdatech:openSourceProject . ?project rdfs:label ?title . ?project ex:description ?description
+ .  optional {?project foaf:depiction ?image } optional { ?project foaf:homepage ?homepage } optional {?project sda:twitter ?twitter } optional {?project ex:source ?source } optional { ?project ex:download ?download } } {% endcapture %} {% assign opensource
+ = page.rdf | sparql_query: query %}
+ <!-- QUERRY to GET the Incubator Projects -->
+ {% capture query %} SELECT ?project ?title ?description ?longdescription ?image ?homepage ?twitter ?source ?download WHERE{ ?project a foaf:Project . ?project a sdatech:incubatorProject . ?project rdfs:label ?title . ?project ex:description ?description
+ . optional {?project foaf:depiction ?image }. optional { ?project foaf:homepage ?homepage }. optional {?project sda:twitter ?twitter }. optional {?project ex:source ?source }. optional { ?project ex:download ?download } } {% endcapture %} {% assign incubators
+ = page.rdf | sparql_query: query %}
+ <!--QUERRY to GET the Archived Projects  -->
+ {% capture query %} SELECT ?project ?title ?description ?longdescription ?image ?homepage ?twitter ?source ?download WHERE{ ?project a foaf:Project . ?project a sdatech:archived . ?project rdfs:label ?title . ?project ex:description ?description
+ .  optional {?project foaf:depiction ?image } optional { ?project foaf:homepage ?homepage } optional {?project sda:twitter ?twitter } optional {?project ex:source ?source } optional { ?project ex:download ?download } } {% endcapture %} {% assign archiveds
+ = page.rdf | sparql_query: query %}

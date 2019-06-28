@@ -1,0 +1,10 @@
+<!-- Query for All Blog Posts -->
+{% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sioc:Post . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image  . ?blog sioc:content ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign blogposts = page.rdf | sparql_query: query %}
+<!-- Query for Paper Notifications Blog Posts -->
+{% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sdatech:PaperNotification . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image . ?blog sioc:content ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign paperNotificationsArray = page.rdf | sparql_query: query %}
+<!-- Query for Invited Talks Blog Posts -->
+{% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sdatech:InvitedTalks . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image . ?blog sioc:content ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign invitedTalksArray = page.rdf | sparql_query: query %}
+<!-- Query for Project Announcement Blog Posts -->
+{% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sdatech:ProjectAnnouncements . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image . ?blog sioc:content ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign projectAnnouncementsArray = page.rdf | sparql_query: query %}
+<!-- Query For General Blog Posts -->
+{% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sdatech:GeneralPosts . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image . ?blog sioc:content ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign generalPostsArray = page.rdf | sparql_query: query %}

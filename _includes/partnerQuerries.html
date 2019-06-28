@@ -1,0 +1,15 @@
+<!-- QUERRY to GET ALL the PARTNERS -->
+{% capture query %} SELECT ?partners ?title ?description ?image ?homepage WHERE{ ?partners a sdatech:Partner . OPTIONAL { ?partners rdfs:label ?title } . OPTIONAL { ?partners dct:abstract ?description } . OPTIONAL { ?partners foaf:depiction ?image }
+. OPTIONAL { ?partners foaf:homepage ?homepage } . } ORDER BY ASC(?title) {% endcapture %} {% assign partnersArray = page.rdf | sparql_query: query %} {% assign length = partners | size %}
+<!-- QUERRY to GET the INDUSTRY PARTNERS -->
+{% capture query %} SELECT ?partners ?title ?description ?image ?homepage WHERE{ ?partners a sdatech:Partner . ?partners a sdatech:industryPartner . ?partners foaf:name ?title . ?partners dct:abstract ?description . ?partners foaf:depiction ?image
+. ?partners foaf:homepage ?homepage . } {% endcapture %} {% assign industryPartnersArray = page.rdf | sparql_query: query %}
+<!-- QUERRY to GET ALL the ACADMEIC PARTNERS -->
+{% capture query %} SELECT ?partners ?title ?description ?image ?homepage WHERE{ ?partners a sdatech:Partner . ?partners a sdatech:academicPartner . ?partners foaf:name ?title . ?partners dct:abstract ?description . ?partners foaf:depiction ?image
+. ?partners foaf:homepage ?homepage . } {% endcapture %} {% assign academicPartnersArray = page.rdf | sparql_query: query %}
+<!-- FOR GETTING ASSOCIATED PROJECTS -->
+{% capture query %} SELECT ?partners ?project ?partnername ?name ?image  WHERE{ ?partners a sdatech:Partner . ?partners foaf:currentProject ?project . OPTIONAL { ?partners foaf:name ?partnername } . ?project rdfs:label ?name  . OPTIONAL { ?project foaf:logo ?image } }
+{% endcapture %} {% assign partnersWithProjects = page.rdf | sparql_query: query %}
+
+<!-- BUG: Check if used the following seems redundant -->
+{% assign length2 = partners | size %}

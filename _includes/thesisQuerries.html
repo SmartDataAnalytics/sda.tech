@@ -1,0 +1,39 @@
+<!--QUERY for all open Thesis  -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
+ ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:openThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openThesis = page.rdf | sparql_query: query %}
+<!--QUERY for open Bachelor Thesis  -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
+?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:openThesis . ?thesis a sdatech:bachelorThesis .  ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openBachelorsThesis = page.rdf | sparql_query: query %}
+<!--QUERY for archived Bachelor Thesis  -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
+ ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:archivedThesis . ?thesis a sdatech:bachelorThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign archivedBachelorsThesis = page.rdf | sparql_query: query %}
+<!--QUERY for open Master Thesis  -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
+?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:openThesis . ?thesis a sdatech:masterThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openMasterThesis = page.rdf | sparql_query: query %}
+<!--QUERY for archived Master Thesis  -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
+ ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:archivedThesis . ?thesis a sdatech:masterThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign archivedMasterThesis = page.rdf | sparql_query: query %}
+<!-- QUERY for OnGoingThesis  -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
+?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:ongoingThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign openOngoingThesis = page.rdf | sparql_query: query %}
+<!-- QUERY for CompletedThesis  -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?language ?link ?abstract WHERE{
+ ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis a sdatech:archivedThesis . ?thesis dct:title ?thesisTitle . ?thesis dct:abstract ?abstract . ?thesis dct:language ?language . OPTIONAL { ?thesis foaf:homepage ?link } . } {% endcapture %} {% assign archivedThesisList = page.rdf | sparql_query: query %}
+
+<!--Querry to GET all the Contact Persons of the Thesis   -->
+{% capture query %} SELECT  ?thesis ?thesisTitle ?person ?personName ?personImage WHERE{
+ ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis dct:title ?thesisTitle . ?thesis dct:creator ?person . ?person foaf:name ?personName . ?person foaf:depiction ?personImage . } {% endcapture %} {% assign personsInThesis = page.rdf | sparql_query: query %}
+<!-- Query to GET all the Groups of SDA  -->
+{% capture query %} SELECT ?group ?description ?imageclass ?longdescription WHERE{ ?group a aiiso:ResearchGroup . ?group rdfs:label ?description . ?group dct:abstract ?longdescription.  ?group sda:imageclass ?imageclass . } {% endcapture %} {% assign groups = page.rdf | sparql_query: query %}
+
+
+<!--Querry to GET all the Contact Persons of the Thesis   -->
+<!-- BUG: From Thesis Master Maybe Redundant -->
+<!-- {% capture query %} SELECT  ?thesis ?thesisTitle ?person ?personName ?personImage WHERE{
+ ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis dct:title ?thesisTitle . ?thesis dct:creator ?person . ?person foaf:name ?personName . ?person foaf:depiction ?personImage . } {% endcapture %} {% assign personsInThesis = page.rdf | sparql_query: query %}
+   -->
+
+<!-- BUG: May be Redundant from Thesis On going -->
+   <!--Querry to GET all the Contact Persons of the Thesis   -->
+   <!-- {% capture query %} SELECT  ?thesis ?thesisTitle ?person ?personName ?personImage WHERE{
+    ?thesis a dct:BibliographicResource . ?thesis a bibo:Thesis . ?thesis dct:title ?thesisTitle . ?thesis dct:creator ?person . ?person foaf:name ?personName . ?person foaf:depiction ?personImage . } {% endcapture %} {% assign personsInThesis = page.rdf | sparql_query: query %} -->

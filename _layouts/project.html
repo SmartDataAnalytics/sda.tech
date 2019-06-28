@@ -5,75 +5,101 @@ toggledURL: project
 toggledURLTo: /project/allProjects
 navigationdiv: Projects
 ---
+{% capture title %}{{ page.rdf | rdf_property: 'rdfs:label' }}{% endcapture %}
+{% capture pname %}{{ page.rdf | rdf_property: 'foaf:name' }}{% endcapture %}
 
-{% capture title %} {{ page.rdf | rdf_property: 'rdfs:label' }} {% endcapture %}
-<script>
-setTitle('{{title}}', '{{site.title | escape}}');
-deactivateHeader();
-activateHeader('{{page.navigationdiv}}');
-</script>
+{% include projectQuerries.html %}
+{% include projectHeaderActivation.html %}
 
-<div class="post mainDiv">
-  <div class="pagination" style="background-color:white !important;">
-    <div class="post-content">
-      <div class="main-content">
-        {% assign title= page.rdf | rdf_property: 'rdfs:label' %}{% assign homepageProject= page.rdf | rdf_property: 'foaf:homepage' %}{% assign twitterProject= page.rdf | rdf_property: 'sda:twitter' %}{% assign downloadProject= page.rdf | rdf_property: 'sda:download' %}{% assign projectSource= page.rdf | rdf_property: 'sda:source' %}{% assign image= page.rdf | rdf_property: 'foaf:depiction' %} {% assign description= page.rdf |rdf_property: 'ex:longdescription' %} {% include projectItem.html title=title image=image description=description last=1 href=url projectItemFor="project" homepage=homepageProject twitter=twitterProject source=projectSource download=downloadProject %}
-      </div>
-      {% capture projectMainTitle %}{{title}}{% endcapture %}
-      {% capture query %} SELECT ?person ?personname ?image ?project ?projectname Where {
-          ?person a foaf:Person . OPTIONAL { ?person foaf:name ?personname } . OPTIONAL { ?person foaf:depiction ?image } .  ?person foaf:currentProject ?project . ?project  rdfs:label ?projectname .
-      } {% endcapture %} {% assign projectmembers = page.rdf | sparql_query: query %}
-      {% if projectmembers.size != 0 %}
-      <div class="members-projects">
-        <br class="horizontal-separator2" />
-        <h4>Team</h4>
-          <div class="membersofProject links">
-            {% for person in projectmembers %}
-             {% capture projectTitle %}{{person.projectname}}{% endcapture %}
-              {% if projectMainTitle == projectTitle %}
-                {% assign url= person.person | remove: "http://sda.tech/" %}
-                <div class="chip">
-                  <img  class="img-circle-small" src="{{person.image}}" alt="Person" width="96" height="96">
-                  <a href="../../{{url}}">{{person.personname}}</a>
-                </div>
-              {% endif %}
-            {% endfor %}
+<div class="borderAll">
+  <div class="pagination">
+    <!-- Toggle Button Item -->
+    {% include toggleMenu.html type = "oneRow" id="projecttoggleicon" %}
+
+    <div id="allProjectHeader" style="display:none;">
+      {% include projectAllProjectHeaderLogic.html %}
+    </div>
+    <div id="particularProjectHeader" style="display:block;">
+      {% include projectParticularProjectHeaderLogic.html %}
+    </div>
+  </div>
+  <div class="content-people" style="padding-right:0px !important; padding-top:0px !important; padding-bottom:0px !important; padding-left:0px !important;">
+    <div class="view-table">
+      <div class="view-row" id="projectTableRow">
+        <div id="projectSecondaryNav" class="secondary-nav" style="display:none;">
+          <div id="secondaryNavProjectAll" style="display:none;">
+            {% include secondaryNavProjects.html listItems=completeList status='all' name=title fromAll=1 %}
           </div>
-      </div>
-      {% endif %}
-      <!-- <hr width="100%" > -->
-
-      {% capture query %} SELECT ?partner ?partnername ?image ?partnersite WHERE{
-      ?partner a sdatech:Partner . ?partner foaf:currentProject <{{page.rdf}}> . ?partner rdfs:label ?partnername . ?partner foaf:depiction ?image . OPTIONAL{ ?partner foaf:homepage ?partnersite } . } {% endcapture %} {% assign partners = page.rdf | sparql_query: query %}
-      {% if partners.size != 0 %}
-      <br class="horizontal-separator2" />
-      <h4>Partners</h4>
-        <div class="partnersOfProject links">
-          {% for partner in partners %} {% assign url= partner.partner | remove: "http://sda.tech/"%}
-            <div class="chip">
-              <img  class="img-circle-small" src="{{partner.image}}" alt="Person" width="96" height="96">
-              <a {% if partner.partnersite != NULL %}href="{{partner.partnersite}}" {% else %}href="../../partners/"{% endif %} target="_blank">{{partner.partnername}}</a>
+          <div id="secondaryNavParticularProject" style="display:none;">
+            {% include secondaryNavProjects.html listItems=list name=title %}
+          </div>
+        </div>
+          <div id="project" class="post-content">
+            <div class="main-content">
+              {% assign title= page.rdf | rdf_property: 'rdfs:label' %}{% assign homepageProject= page.rdf | rdf_property: 'foaf:homepage' %}{% assign twitterProject= page.rdf | rdf_property: 'sda:twitter' %}{% assign downloadProject= page.rdf | rdf_property: 'sda:download' %}{% assign projectSource= page.rdf | rdf_property: 'sda:source' %}{% assign image= page.rdf | rdf_property: 'foaf:depiction' %} {% assign description= page.rdf |rdf_property: 'ex:longdescription' %} {% include projectItem.html title=title image=image description=description last=1 projectItemFor="project" homepage=homepageProject twitter=twitterProject source=projectSource download=downloadProject fromAll=2 %}
             </div>
-          {% endfor %}
-        </div>
-      {% endif %}
-      <!-- <hr width="100%" > -->
+            {% capture projectMainTitle %}{{title}}{% endcapture %}
+            {% capture query %} SELECT ?person ?personname ?image ?project ?projectname Where {
+                ?person a foaf:Person . OPTIONAL { ?person foaf:name ?personname } . OPTIONAL { ?person foaf:depiction ?image } .  ?person foaf:currentProject ?project . ?project  rdfs:label ?projectname .
+            } {% endcapture %} {% assign projectmembers = page.rdf | sparql_query: query %}
+            {% if projectmembers.size != 0 %}
+            <div class="members-projects" style="margin-right:32px; margin-left:32px; margin-bottom:56px;">
+              <h4>Team</h4>
+                <div class="membersofProject links">
+                  {% for person in projectmembers %}
+                   {% capture projectTitle %}{{person.projectname}}{% endcapture %}
+                    {% if projectMainTitle == projectTitle %}
+                      {% assign url= person.person | remove: "http://sda.tech/" %}
+                      <div class="chip">
+                        <img  class="img-circle-small" src="{{person.image}}" alt="Person" width="96" height="96">
+                        <a href="../../{{url}}">{{person.personname}}</a>
+                      </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+            </div>
+            {% endif %}
 
-      {% capture query %} SELECT ?publication ?pubname ?description WHERE{
-        <{{page.rdf}}> ex:publication ?publication . ?publication dc:title ?pubname . } {% endcapture %} {% assign resultset2 = page.rdf | sparql_query: query %}
-      {% if resultset2.size != 0 %}
-      <br class="horizontal-separator2" />
-      <h4>Publications</h4>
-        <div class="publications-project">
-          <!-- Displaying all the publications of the PROJECT  -->
-          {% for result in resultset2 %}
-            {% include pubEntry.html title=result.pubname %}
-          {% endfor %}
-        <div>
-          <br class="horizontal-separator2" />
+            {% capture query %} SELECT ?partner ?partnername ?image ?partnersite WHERE{
+            ?partner a sdatech:Partner . ?partner foaf:currentProject <{{page.rdf}}> . ?partner rdfs:label ?partnername . ?partner foaf:depiction ?image . OPTIONAL{ ?partner foaf:homepage ?partnersite } . } {% endcapture %} {% assign partners = page.rdf | sparql_query: query %}
+            {% if partners.size != 0 %}
+            <div class="partners-project" style="margin-right:32px; margin-left:32px; margin-bottom:0px;">
+                <h4>Partners</h4>
+                <div class="partnersOfProject links">
+                  {% for partner in partners %} {% assign url= partner.partner | remove: "http://sda.tech/"%}
+                    <div class="chip">
+                      <img  class="img-circle-small" src="{{partner.image}}" alt="Person" width="96" height="96">
+                      <a {% if partner.partnersite != NULL %}href="{{partner.partnersite}}" {% else %}href="../../partners/"{% endif %} target="_blank">{{partner.partnername}}</a>
+                    </div>
+                  {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% capture query %} SELECT ?publication ?pubname ?description WHERE{
+              <{{page.rdf}}> ex:publication ?publication . ?publication dc:title ?pubname . } {% endcapture %} {% assign resultset2 = page.rdf | sparql_query: query %}
+            {% if resultset2.size != 0 %}
+            <h4>Publications</h4>
+              <div class="publications-project">
+                <!-- Displaying all the publications of the PROJECT  -->
+                {% for result in resultset2 %}
+                  {% include pubEntry.html title=result.pubname %}
+                {% endfor %}
+              <div>
+              </div>
+            </div>
+            {% endif %}
         </div>
       </div>
-      {% endif %}
+    </div>
+  </div>
+  <div class="footer-wraper">
+    <div id="footer-allProject" style="display:none;">
+      {% include projectFooter.html name=title previousProject=previousTitleAll previousUrl=previousUrlAll nextProject=nextTitleAll nextUrl=nextUrlAll fromAll=1 %}
+    </div>
+    <div id="footer-particularProject" style="display:none;">
+      {% include projectFooter.html name=title previousProject=previousTitle previousUrl=previousUrl nextProject=nextTitle nextUrl=nextUrl  %}
+    </div>
   </div>
 </div>
-</div>
+<div id="snackbar2">Please wait the page is loading</div>

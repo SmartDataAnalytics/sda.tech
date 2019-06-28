@@ -33,6 +33,7 @@
                   {% capture icon%}{{result2.icon}}{% endcapture %}
                     <a href="{{ urlNav | remove:"index.html" }}" class="{% if include.active == navlabel %}active{% endif %} responsiveTabItem" onclick="#"><i class="{{icon}}"  aria-hidden="true"></i>
                          {{result2.label}}
+                         <span style="color:red; font-weight:bolder; font-size:x-small; vertical-align:top;">{{include.total}}</span>
                     </a>
                 {% endif %}
             {% endfor %}

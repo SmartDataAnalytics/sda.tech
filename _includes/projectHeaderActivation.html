@@ -1,0 +1,102 @@
+<script>
+var btn;
+// Snack Bar Call Function
+function snackbarCall()
+{
+  var x = document.getElementById("snackbar2");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+document.onreadystatechange = function(e)
+{
+    if ( document.readyState === 'loading' )
+    {
+
+    }
+
+    if (document.readyState === 'interactive')
+    {
+        //dom is ready, window.onload fires later
+        setTitle('{{title}}', '{{site.title | escape}}');
+        deactivateHeader();
+        activateHeader('{{page.navigationdiv}}');
+
+        if( getBoolFromAllToDetailProject() == 'true' )
+        {
+          document.getElementById('allProjectHeader').style.display = 'block';
+          document.getElementById('particularProjectHeader').style.display = 'none';
+          document.getElementById('secondaryNavProjectAll').style.display = 'block';
+          document.getElementById('secondaryNavParticularProject').style.display = 'none';
+          document.getElementById('footer-particularProject').style.display = 'none' ;
+          document.getElementById('footer-allProject').style.display = 'block' ;
+
+          if(document.getElementById('allProjectHeader').style.display == 'block' && document.getElementById('particularProjectHeader').style.display )
+            localStorage.setItem("boolFromAllToDetailProject", 'false' );
+
+        }else {
+          document.getElementById('allProjectHeader').style.display = 'none';
+          document.getElementById('particularProjectHeader').style.display = 'block';
+          document.getElementById('secondaryNavProjectAll').style.display = 'none';
+          document.getElementById('secondaryNavParticularProject').style.display = 'block';
+          document.getElementById('footer-particularProject').style.display = 'block' ;
+          document.getElementById('footer-allProject').style.display = 'none' ;
+        }
+
+        btn = document.querySelector('.toggle-menu');
+        btn.addEventListener('click', snackbarCall );
+    }
+
+    if ( document.readyState === 'complete' )
+    {
+        // Toggle functionality for Person Secondary Navigation
+        btn.removeEventListener('click', snackbarCall ) ;
+        var icon = document.getElementById('projecttoggleicon');
+        var hint = document.getElementById('projectSecondaryNav');
+        var personTableRow = document.getElementById('projectTableRow');
+        var active = document.querySelector("#project");
+        var content = document.getElementById('project');
+
+        var heightPerson = content.clientHeight;
+        var height = hint.clientHeight;
+        var width = hint.clientWidth;
+        var widthTable = ( personTableRow.clientWidth * 25 ) / 100 ;
+        var heightPerson = content.clientHeight;
+
+
+        console.log(width + 'x' + height);
+        console.log("HP", heightPerson);
+        // initialize them (within hint.style)
+        // hint.style.height = heightPerson + 'px';
+        // hint.style.width = width + 'px';
+
+        btn.addEventListener('click', function(){
+          if( hint.style.display == 'none' ){
+
+            active.classList.add("active-nav");
+            hint.style.display = 'inline-block';
+            icon.classList.add("icon-active");
+            hint.style.height = heightPerson + 'px';
+            hint.style.opacity = '1';
+            hint.style.width = widthTable + 'px';
+
+            heightPerson = content.clientHeight;
+            hint.style.height = heightPerson + 'px' ;
+
+          }
+          else{
+            hint.style.opacity = 0;
+            hint.style.height = '0';
+            hint.style.width = '0';
+
+            active.classList.remove("active-nav");
+            icon.classList.remove("icon-active");
+            hint.style.display = 'none';
+          }
+
+        });
+    }
+
+};
+
+</script>

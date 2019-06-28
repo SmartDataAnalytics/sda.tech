@@ -1,0 +1,18 @@
+{% assign completeList = fundprojects | concat: opensource | concat: incubators | concat: archiveds %}
+{% include projectHeader.html active="Projects" total=allProjects.size %}
+
+{% assign x = 0 %}
+{% assign indexPreviousAll = 0 %}
+{% assign indexNextAll = 0 %}
+{% for items in completeList %}
+  {% capture nameInListAll %}{{items.title}}{% endcapture %}
+  {% if nameInListAll == title %}
+    {% assign indexPreviousAll = x | minus: 1 %}
+    {% assign indexNextAll = x | plus:1  %}
+  {% endif %}
+  {% assign x = x | plus:1 %}
+{% endfor %}
+{% capture previousTitleAll %}{{completeList[indexPreviousAll].title}}{% endcapture %}
+{% assign previousUrlAll = completeList[indexPreviousAll].project | remove: "http://sda.tech/" %}
+{% capture nextTitleAll %}{{completeList[indexNextAll].title}}{% endcapture %}
+{% assign nextUrlAll = completeList[indexNextAll].project | remove: "http://sda.tech/" %}

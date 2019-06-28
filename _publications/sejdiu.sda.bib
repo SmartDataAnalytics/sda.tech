@@ -1,0 +1,152 @@
+
+@Other{ThakkarEtAl:LITMUS16,
+  Title                    = {{LITMUS}: {A}n {O}pen {E}xtensible {F}ramework for {B}enchmarking {RDF} {D}ata {M}anagement {S}olutions},
+  Author                   = {Harsh Thakkar and Mohnish Dubey and Gezim Sejdiu and Ngonga Ngomo, Axel-Cyrille and Jeremy Debattista and Christoph Lange and Jens Lehmann and S{\"o}ren Auer and Maria-Esther Vidal},
+  Date                     = {2016-08-09},
+  Eprint                   = {1608.02800},
+  Eprintclass              = {cs.PF},
+  Eprinttype               = {arxiv},
+  File                     = {http://arxiv.org/pdf/1608.02800},
+  Pubs                     = {clange,vidal},
+  Year                     = {2016}
+}
+
+@InProceedings{sejdiu-2018-dist-lod-stats-iswc,
+  Title                    = {Dist{LODS}tats: {D}istributed {C}omputation of {RDF} {D}ataset {S}tatistics},
+  Author                   = {Sejdiu, Gezim and Ermilov, Ivan and Lehmann, Jens and Nadjib-Mami, Mohamed},
+  Booktitle                = {Proceedings of 17th International Semantic Web Conference},
+  Year                     = {2018},
+
+  Abstract                 = {Over the last years, the Semantic Web has been growing steadily. Today, we count more than 10,000 datasets made available online following Semantic Web standards.
+Nevertheless, many applications, such as data integration, search, and interlinking, may not take the full advantage of the data without having a priori statistical information about its internal structure and coverage.
+In fact, there are already a number of tools, which offer such statistics, providing basic information about RDF datasets and vocabularies.
+However, those usually show severe deficiencies in terms of performance once the dataset size grows beyond the capabilities of a single machine.
+In this paper, we introduce a software component for statistical calculations of large RDF datasets, which scales out to clusters of machines.
+More specifically, we describe the first distributed in-memory approach for computing 32 different statistical criteria for RDF datasets using Apache Spark.
+The preliminary results show that our distributed approach improves upon a previous centralized approach we compare against and provides approximately linear horizontal scale-up.
+The criteria are extensible beyond the 32 default criteria, is integrated into the larger SANSA framework and employed in at least four major usage scenarios beyond the SANSA community.},
+  Keywords                 = {2018 bde sejdiu lehmann group_aksw iermilov},
+  Url                      = {http://jens-lehmann.org/files/2018/iswc_distlodstats.pdf}
+}
+
+@InProceedings{sejdiu-2018-statisfy-iswc-poster,
+  Title                    = {{STAT}isfy {M}e: {W}hat are my {S}tats?},
+  Author                   = {Sejdiu, Gezim and Ermilov, Ivan and Lehmann, Jens and Mami, Mohamed-Nadjib},
+  Booktitle                = {Proceedings of 17th International Semantic Web Conference, Poster \& Demos},
+  Year                     = {2018},
+
+  Keywords                 = {2018 bde sejdiu lehmann group_aksw iermilov mami},
+  Url                      = {http://jens-lehmann.org/files/2018/iswc_statisfy_pd.pdf}
+}
+
+@MastersThesis{sejdiu2014,
+  Title                    = {Semantic {R}anking of {W}eb {P}ages : {T}he {W}ikipedia {C}ase {S}tudy},
+  Author                   = {Gezim Sejdiu},
+  School                   = {Faculty of {E}lectrical and {C}omputer {E}ngineering},
+  Year                     = {2014},
+
+  Address                  = {University of Prishtina, Kosova},
+  Month                    = {7},
+
+  Keywords                 = {2014 sejdiu},
+  Url                      = {https://www.researchgate.net/profile/Gezim_Sejdiu/publication/264400068_Rangimi_semantik_i_ueb_faqeve_-_Wikipedia_si_nje_rast_studimi_Semantic_Ranking_of_Web_Pages_-_The_Wikipedia_Case_Study/links/569904a808aeeea98594506c/Rangimi-semantik-i-ueb-faqeve-Wikipedia-si-nje-rast-studimi-Semantic-Ranking-of-Web-Pages-The-Wikipedia-Case-Study.pdf?origin=publication_detail&ev=pub_int_prw_xdl&msrp=AA37FwBzmKERYXi1M2vhWudDort1uLpVM1OSeZjP0qQ0IpEmuvefoRBnX2gTOpctGw5NQ-WolOCmQ4CYW6PwSE9UP27VAGvrmWbzGO7X5ssHhngO5v4.lVzcwbIYCwbOaWUUPbOVaMXxWfjqqco8y7lPka6Sx7akCcIJgNaBUsRP9ybuqT0wg-ngpyu_fSPRrs63hkYjLJvJZvNDWR3fzZopSg.2puAeXufSna9VfnNYPTr3-L_fgans7XuC2YL1uo73vNE68nlRwKz0sc_RvUZusuNMkwxtSkJClAIrpmtZNrOeB7UtJ9-xaG5j8pqRQ.jB1XguS-PfblCV77SV_zZJK2kMl5WXGMPP-NgQs8X5x0efgfCk_urpyJJb-cnp7LHUlXEUiq_t5wSdDgb3j9lXd99NTG_tyV6LESEQ}
+}
+
+@InProceedings{lehmann-2017-sansa-iswc,
+  Title                    = {Distributed {S}emantic {A}nalytics using the {SANSA} {S}tack},
+  Author                   = {Lehmann, Jens and Sejdiu, Gezim and B\"uhmann, Lorenz and Westphal, Patrick and Stadler, Claus and Ermilov, Ivan and Bin, Simon and Chakraborty, Nilesh and Saleem, Muhammad and Ngonga, Axel-Cyrille Ngomo and Jabeen, Hajira},
+  Booktitle                = {Proceedings of 16th International Semantic Web Conference - Resources Track (ISWC'2017)},
+  Year                     = {2017},
+
+  Abstract                 = {Over the past decade, vast amounts of machine-readable structured information have become available through the automation of research processes as well as the increasing popularity of knowledge graphs and semantic technologies. A major research challenge today is to perform scalable analysis of large-scale knowledge graphs to facilitate applications like link prediction, knowledge base completion and question answering. Most analytics approaches, which scale horizontally (i.e., can be executed in a distributed environment) work on simple feature-vector-based input rather than more expressive knowledge structures. On the other hand, analytics methods which exploit expressive structures usually do not scale well to very large knowledge bases. This software framework paper describes the ongoing project Semantic Analytics Stack (SANSA) which supports expressive and scalable semantic analytics by providing functionality for distributed in-memory computing for RDF data. The library provides APIs for RDF storage, querying using SPARQL and forward chaining inference. It includes several machine learning algorithms for RDF knowledge graphs. The article describes the vision, architecture and use cases of SANSA.},
+  Added-at                 = {2017-07-17T14:46:26.000+0200},
+  Biburl                   = {https://www.bibsonomy.org/bibtex/21ae18ac13750f9cf74227fe0a7c50104/aksw},
+  Interhash                = {eb99dff0ce6a9cdbce2c4cbea115fbee},
+  Intrahash                = {1ae18ac13750f9cf74227fe0a7c50104},
+  Keywords                 = {2017 bde buehmann chakraborty group_aksw iermilov lehmann ngonga saleem sbin sejdiu stadler westphal},
+  Owner                    = {iermilov},
+  Timestamp                = {2017-07-17T14:46:26.000+0200},
+  Url                      = {http://svn.aksw.org/papers/2017/ISWC_SANSA_SoftwareFramework/public.pdf}
+}
+
+@InProceedings{jabeen-2018-sansa-outlier-ekaw,
+  Title                    = {Divided we stand out! {F}orging {C}ohorts f{O}r {N}umeric {O}utlier {D}etection in large scale knowledge graphs ({CONOD})},
+  Author                   = {Jabeen, Hajira and Dadwal, Rajjat and Sejdiu, Gezim and Lehmann, Jens},
+  Booktitle                = {21st International Conference on Knowledge Engineering and Knowledge Management (EKAW'2018)},
+  Year                     = {2018},
+  Keywords                 = {2018 sansa jabeen sejdiu lehmann group_aksw},
+  Url                      = {http://jens-lehmann.org/files/2018/ekaw_conod.pdf}
+}
+
+@InProceedings{graux-2018-sansa-ethereum-semantics-poster,
+  Title                    = {Profiting from {K}itties on {E}thereum: {L}everaging {B}lockchain {RDF} with {SANSA}},
+  Author                   = {Graux, Damien and Sejdiu, Gezim and Jabeen, Hajira and Lehmann, Jens and Sui, Danning and Muhs, Dominik and Pfeffer, Johannes},
+  Booktitle                = {14th International Conference on Semantic Systems, Poster \& Demos},
+  Year                     = {2018},
+
+  Keywords                 = {2018 bde graux sejdiu lehmann group_aksw jabeen},
+  Url                      = {http://jens-lehmann.org/files/2018/semantics_ethereum_pd.pdf}
+}
+
+@InProceedings{KESW_2017_BDE,
+  Title                    = {Managing Lifecycle of Big Data Applications},
+  Author                   = {Ermilov, Ivan and Ngomo, Axel-Cyrille Ngonga and Versteden, Aad and Jabeen, Hajira and Sejdiu, Gezim and Argyriou, Giorgos and Selmi, Luigi and Jakobitsch, J{\"u}rgen and Lehmann, Jens},
+  Booktitle                = {KESW},
+  Year                     = {2017},
+
+  Added-at                 = {2017-08-31T16:24:46.000+0200},
+  Biburl                   = {https://www.bibsonomy.org/bibtex/2f5ee59fb595ade7ece4c840ad4a95741/aksw},
+  Interhash                = {8ac92f717e75f88d59f2811ecf7b816e},
+  Intrahash                = {f5ee59fb595ade7ece4c840ad4a95741},
+  Keywords                 = {bde group_aksw iermilov lehmann ngonga simba},
+  Timestamp                = {2017-08-31T16:24:46.000+0200},
+  Url                      = {https://svn.aksw.org/papers/2017/KESW_BDE_Workflow/public.pdf}
+}
+
+@InProceedings{iermilov-2017-sansa-iswc-demo,
+  Title                    = {The {T}ale of {S}ansa {S}park},
+  Author                   = {Ermilov, Ivan and Lehmann, Jens and Sejdiu, Gezim and B\"uhmann, Lorenz and Westphal, Patrick and Stadler, Claus and Bin, Simon and Chakraborty, Nilesh and Petzka, Henning and Saleem, Muhammad and Ngonga, Axel-Cyrille Ngomo and Jabeen, Hajira},
+  Booktitle                = {Proceedings of 16th International Semantic Web Conference, Poster \& Demos},
+  Year                     = {2017},
+
+  Added-at                 = {2017-08-31T16:24:45.000+0200},
+  Biburl                   = {https://www.bibsonomy.org/bibtex/2f9b5a69afa4755944984ae63f59ad146/aksw},
+  Interhash                = {ebabfe08f697304b399c9b6b89f2829e},
+  Intrahash                = {f9b5a69afa4755944984ae63f59ad146},
+  Keywords                 = {2017 bde buehmann chakraborty group_aksw iermilov lehmann mole ngonga saleem sbin sejdiu stadler westphal},
+  Owner                    = {iermilov},
+  Timestamp                = {2017-08-31T16:24:45.000+0200},
+  Url                      = {http://jens-lehmann.org/files/2017/iswc_pd_sansa.pdf}
+}
+
+@InProceedings{Auer+ICWE-2017,
+  Title                    = {{T}he {B}ig{D}ata{E}urope {P}latform - {S}upporting the {V}ariety {D}imension of {B}ig {D}ata},
+  Author                   = {S\"oren Auer and Simon Scerri and Aad Versteden and Erika Pauwels and Angelos Charalambidis and Stasinos Konstantopoulos and Jens Lehmann and Hajira Jabeen and Ivan Ermilov and Gezim Sejdiu and Andreas Ikonomopoulos and Spyros Andronopoulos and Mandy Vlachogiannis and Charalambos Pappas and Athanasios Davettas and Iraklis A. Klampanos and Efstathios Grigoropoulos and Vangelis Karkaletsis and Victor de Boer and Ronald Siebes and Mohamed Nadjib Mami and Sergio Albani and Michele Lazzarini and Paulo Nunes and Emanuele Angiuli and Nikiforos Pittaras and George Giannakopoulos and Giorgos Argyriou and George Stamoulis and George Papadakis and Manolis Koubarakis and Pythagoras Karampiperis and Axel-Cyrille Ngonga Ngomo and Maria-Esther Vidal},
+  Booktitle                = {17th International Conference on Web Engineering (ICWE2017)},
+  Year                     = {2017},
+
+  Abstract                 = {The management and analysis of large-scale datasets -- described with the term Big Data -- involves the three classic dimensions volume, velocity and variety. While the former two are well supported by a plethora of software components, the variety dimension is still rather neglected. We present the BDE platform -- an easy-to-deploy, easy-to-use and adaptable (cluster-based and standalone) platform for the execution of big data components and tools like Hadoop, Spark, Flink. The BDE platform was designed based upon the requirements gathered from the seven societal challenges put forward by the European Commission in the Horizon 2020 programme and targeted by the BigDataEurope pilots. As a result, the BDE platform allows to perform a variety of Big Data flow tasks like message passing (Kafka, Flume), storage (Hive, Cassandra) or publishing (GeoTriples). In order to facilitate the processing of heterogeneous data, a particular innovation of the platform is the semantic layer, which allows to directly process RDF data and to map and transform arbitrary data into RDF.},
+  Bdsk-url-1               = {http://svn.aksw.org/lod2/Paper/ISWC2012-InUse_LOD2-Stack/public.pdf},
+  Date-modified            = {2012-12-02 12:25:29 +0000},
+  Keywords                 = {group_aksw sys:relevantFor:infai sys:relevantFor:bis 2017 auer iermilov ngonga lehmann bde MOLE},
+  Url                      = {http://jens-lehmann.org/files/2017/icwe_bde.pdf}
+}
+
+@InBook{Ahmedi2014,
+  Title                    = {Ranking {A}uthors on the {W}eb: {A S}emantic {A}uthor{R}ank},
+  Author                   = {Ahmedi, Lule and Halilaj, Lavdim and Sejdiu, Gezim and Bajraktari, Labinot},
+  Editor                   = {G{\"u}nd{\"u}z-{\"O}{\u{g}}{\"u}d{\"u}c{\"u}, {\c{S}}ule and Etaner-Uyar, A. {\c{S}}ima},
+  Pages                    = {19--40},
+  Publisher                = {Springer Vienna},
+  Year                     = {2014},
+
+  Address                  = {Vienna},
+
+  Abstract                 = {Author ranking is growing in popularity since search engines are considering the author's reputation of a Web page when generating search results. A question that naturally arises is whether we should rank authors on the Web as we rank Web pages by considering their links. In addition, over what links to actually calculate author ranking? We have adopted an extended FOAF ontology, the so-called Co-AuthorOnto ontology, able to represent authors, but also their co-author links on the Web. We further extended Co-AuthorOnto with PageRank and AuthorRank metrics for ranking authors based on their co-author links. Important to note is that both PageRank and AuthorRank are implemented in Semantic Web Rule Language (SWRL), which represents a novelty and fits well with the semantic modeling of authors and their co-author relationships within FOAF. Preliminary semantic ranking results are demonstrated, showcasing also the huge potential of this ranking approach for adopting it by search engines where our future work will focus.},
+  Bdsk-url-1               = {https://doi.org/10.1007/978-3-7091-1797-2_2},
+  Booktitle                = {Social Networks: Analysis and Case Studies},
+  Doi                      = {10.1007/978-3-7091-1797-2_2},
+  ISBN                     = {978-3-7091-1797-2},
+  Keywords                 = {sejdiu},
+  Url                      = {http://luleahmedi.uni-pr.edu/docs/pubs/SemAuthorRank2014.pdf}
+}

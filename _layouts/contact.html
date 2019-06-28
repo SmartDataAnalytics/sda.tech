@@ -1,51 +1,58 @@
 ---
 rdf_prefix_path: sda.tech.pref
 layout: default
+navigationdiv: Contact
 ---
 
-<script> setTitle('Contact', '{{site.title | escape}}'); </script>
+<script>
+  setTitle('Contact', '{{site.title | escape}}');
+  deactivateHeader();
+  activateHeader('{{page.navigationdiv}}');
+</script>
 
 <div class="borderAll">
   <article class="post">
-    <div class="pagination">
-      <br class="horizontal-separator" />
-      <h1 class="post-title">How to Find Us ?</h1>
-      <br/>
+    <div class="content-people">
+      <div class="content-title">
+        <h2 class="post-title">How to Find Us ?</h1>
+      </div>
       <div class="adressSectionOne">
         <p>The Department of <a href="">{{site.title}}</a> is located in the {{site.author}} at <a href="">{{site.addressLineOne}}</a></p>
-      </div><br class="horizontal-separator" />
-      <div class="adressAlocatorGoogleMaps">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5048.77962987527!2d7.218474100799513!3d50.74980521766889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee6529bb263ad%3A0x79d977edbe7cc1a3!2sBirlinghoven%2C+53757+Sankt+Augustin!5e0!3m2!1sen!2sde!4v1503085078690"
-          width="80%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
-      </div><br class="horizontal-separator2" /><br class="horizontal-separator2" />
-      <div class="adressSectionOne">
-        <h1><i class="fa fa-car" aria-hidden="true"></i> Directions by Car</h1>
       </div>
-      <div class="directions">
-        <div class="directionByCar adressSectionOne">
-          <h2>{{site.fraunhoferDepartmentName}}</h2>
-          <p><a href="https://www.google.com/maps?q=Fraunhofer-Institut+f%C3%BCr+Intelligente+Analyse-+und+Informationssysteme+IAIS,+Sankt+Augustin,+Germany&hl=en&ie=UTF8&sll=50.751011,7.201881&sspn=0.102201,0.098705&oq=Fraunhofer+IAIS&t=h&hq=Fraunhofer-Institut+f%C3%BCr+Intelligente+Analyse-+und+Informationssysteme+IAIS,&hnear=Sankt+Augustin,+Cologne,+North+Rhine-Westphalia,+Germany&z=14">Schloss Birlinghoven, Sankt Augustin, Germany</a>.
-            Before your satnav sends you to <a href="https://www.google.com/maps?q=Birlinghoven&ll=50.748703,7.216129&spn=0.025551,0.024676&hnear=Birlinghoven,+Germany&t=h&z=15">Birlinghoven village</a>, rather enter “Konrad-Adenauer-Straße, Sankt Augustin”</p>Schloss
-          Birlinghoven, Sankt Augustin, Germany.
-        </div><br class="horizontal-separator2" /><br class="horizontal-separator2" />
+      <div class="adressAlocatorGoogleMaps">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2525.6152040621773!2d7.0811074!3d50.7270776!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47bee1919e7eb8c3%3A0xf073e14d658e610a!2sEndenicher+Allee+19%2C+53115+Bonn!5e0!3m2!1sen!2sde!4v1557247613781!5m2!1sen!2sde"
+          width="80%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </div>
+      <div class="address-content">
         <div class="adressSectionOne">
-          <h1><i class="fa fa-bus" aria-hidden="true"></i> Directions by Public Transport</h1>
+          <h2><strong>Directions by Car</strong></h2>
         </div>
-        <div class="directionByPublicTransport">
-          <div class="publicUniveristy adressSectionOne">
-            <h2>University</h2>
-            <p>Enter the destination “Pädagogische Fakultät, Bonn” into this <a href="http://reiseauskunft.bahn.de/bin/query.exe/d">form</a></p>
+        <div class="directions">
+          <div class="directionByCar adressSectionOne">
+            <h2 style="color:#757575;"><strong>{{site.fraunhoferDepartmentName}}</strong></h2>
+            <p style="color:#757575;"><a href="https://www.google.com/maps?q=Fraunhofer-Institut+f%C3%BCr+Intelligente+Analyse-+und+Informationssysteme+IAIS,+Sankt+Augustin,+Germany&hl=en&ie=UTF8&sll=50.751011,7.201881&sspn=0.102201,0.098705&oq=Fraunhofer+IAIS&t=h&hq=Fraunhofer-Institut+f%C3%BCr+Intelligente+Analyse-+und+Informationssysteme+IAIS,&hnear=Sankt+Augustin,+Cologne,+North+Rhine-Westphalia,+Germany&z=14">Schloss Birlinghoven, Sankt Augustin, Germany</a>.
+              Before your satnav sends you to <a href="https://www.google.com/maps?q=Birlinghoven&ll=50.748703,7.216129&spn=0.025551,0.024676&hnear=Birlinghoven,+Germany&t=h&z=15">Birlinghoven village</a>, rather enter “Konrad-Adenauer-Straße, Sankt Augustin”</p>Schloss
+            Birlinghoven, Sankt Augustin, Germany.
           </div>
-          <div class="publicInstitute adressSectionOne">
-            <h2>{{site.fraunhoferDepartmentName}}</h2>
-            <p>Enter the destination “Fraunhofer-Schloß Birlinghoven, Sankt Augustin” into this <a href="http://reiseauskunft.bahn.de/bin/query.exe/d">form</a></p>
+          <div class="adressSectionOne">
+            <h1><strong>Directions by Public Transport</strong></h1>
+          </div>
+          <div class="directionByPublicTransport">
+            <div class="publicUniveristy adressSectionOne">
+              <h2>University</h2>
+              <p>Enter the destination “Pädagogische Fakultät, Bonn” into this <a href="http://reiseauskunft.bahn.de/bin/query.exe/d">form</a></p>
+            </div>
+            <div class="publicInstitute adressSectionOne">
+              <h2>{{site.fraunhoferDepartmentName}}</h2>
+              <p>Enter the destination “Fraunhofer-Schloß Birlinghoven, Sankt Augustin” into this <a href="http://reiseauskunft.bahn.de/bin/query.exe/d">form</a></p>
+            </div>
           </div>
         </div>
-      </div><br class="horizontal-separator2" /><br class="horizontal-separator2" />
-      <div class="address adressSectionOne">
-        <h1><i class="fa fa-location-arrow" aria-hidden="true"></i> Address</h1>
-        <p>{{site.addressLineOne}}, {{site.addressLineTwo}}, Germany</p>
-      </div><br class="horizontal-separator2" /><br class="horizontal-separator2" />
+        <div class="address adressSectionOne">
+          <h1><strong>Address</strong></h1>
+          <p>{{site.addressLineOne}}, {{site.addressLineTwo}}, Germany</p>
+        </div>
+      </div>
     </div>
   </article>
 </div>

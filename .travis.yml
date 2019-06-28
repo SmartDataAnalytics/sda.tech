@@ -4,7 +4,8 @@ rvm:
 install:
   - bundle update
   - bundle install
-  - bundle exec jekyll build
+  - travis_wait 30 bundle exec jekyll build
+
   # - bundle exec htmlproofer ./_site --only-4xx --external_only --url-ignore "http://sda.tech/feed.xml"
 
 script: true

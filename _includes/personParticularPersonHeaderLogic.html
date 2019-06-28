@@ -1,0 +1,85 @@
+<!-- Query for Professors -->
+{% capture query %} SELECT ?person ?personname Where {
+    <{{page.rdf}}> a sdatech:professor . ?person foaf:name ?personname . } {% endcapture %}
+{% assign professors = page.rdf | sparql_query: query %}
+
+{% if professors.size != 0 %}
+  {% include peopleHeader.html active ="Professors" total=professorsArray.size %}
+  {% assign list = professorsArray %}
+{% endif %}
+
+<!-- Query For Senior Researchers -->
+{% capture query %} SELECT ?person ?personname Where {
+    <{{page.rdf}}> a sdatech:seniorResearcher . ?person foaf:name ?personname . } {% endcapture %}
+{% assign seniorresearchers = page.rdf | sparql_query: query %}
+
+
+{% if seniorresearchers.size != 0 %}
+  {% include peopleHeader.html active ="Senior Researchers" total=seniorResearchersArray.size %}
+  {% assign list = seniorResearchersArray %}
+{% endif %}
+
+<!-- Query For PhD Students -->
+{% capture query %} SELECT ?person ?personname Where {
+    <{{page.rdf}}> a sdatech:phdStudent . ?person foaf:name ?personname . } {% endcapture %}
+{% assign phdstudents = page.rdf | sparql_query: query %}
+
+{% if phdstudents.size != 0 %}
+  {% include peopleHeader.html active ="PhD Students" total=phdStudentsArray.size %}
+  {% assign list = phdStudentsArray %}
+{% endif %}
+
+<!-- Query For Associate Researchers -->
+{% capture query %} SELECT ?person ?personname Where {
+    <{{page.rdf}}> a sdatech:associateReseracher . ?person foaf:name ?personname . } {% endcapture %}
+{% assign associatedresearchers = page.rdf | sparql_query: query %}
+
+{% if associatedresearchers.size != 0 %}
+  {% include peopleHeader.html active ="Associate Researchers" total=associateResearchersArray.size %}
+  {% assign list = associateResearchersArray %}
+{% endif %}
+
+<!-- Query For Student Assistants -->
+{% capture query %} SELECT ?person ?personname Where {
+    <{{page.rdf}}> a sdatech:studentAssistant . ?person foaf:name ?personname . } {% endcapture %}
+{% assign studentassistants = page.rdf | sparql_query: query %}
+
+{% if studentassistants.size != 0 %}
+  {% include peopleHeader.html active ="Student Assistants" total=studentAssistantsArray.size %}
+  {% assign list = studentAssistantsArray %}
+{% endif %}
+
+<!-- Query For Interns -->
+{% capture query %} SELECT ?person ?personname Where {
+    <{{page.rdf}}> a sdatech:intern . ?person foaf:name ?personname . } {% endcapture %}
+{% assign interns = page.rdf | sparql_query: query %}
+
+{% if interns.size != 0 %}
+  {% include peopleHeader.html active ="Interns" total=interneesArray.size %}
+  {% assign list = interneesArray %}
+{% endif %}
+
+<!-- Query For Former Members -->
+{% capture query %} SELECT ?person ?personname Where {
+    <{{page.rdf}}> a sdatech:formerMember . ?person foaf:name ?personname . } {% endcapture %}
+{% assign formermembers = page.rdf | sparql_query: query %}
+
+{% if formermembers.size != 0 %}
+  {% include peopleHeader.html active ="Former Members" total=formerMembersArray.size  %}
+  {% assign list = formerMembersArray %}
+{% endif %}
+
+<!-- EndQuery -->
+{% assign i = 0 %}
+{% for items in list %}
+  {% capture nameInList %}{{items.pname}}{% endcapture %}
+  {% if nameInList == pname %}
+    {% assign indexPrevious = i | minus:1 %}
+    {% assign indexNext = i | plus:1  %}
+  {% endif %}
+  {% assign i = i | plus:1 %}
+{% endfor %}
+{% capture previousTitle %}{{list[indexPrevious].pname}}{% endcapture %}
+{% assign previousUrl = list[indexPrevious].Person | remove: "http://sda.tech/" %}
+{% capture nextTitle %}{{list[indexNext].pname}}{% endcapture %}
+{% assign nextUrl = list[indexNext].Person | remove: "http://sda.tech/" %}

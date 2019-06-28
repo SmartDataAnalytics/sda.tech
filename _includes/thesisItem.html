@@ -1,34 +1,30 @@
-<br class="horizontal-separator"/>
-<div class="partner-title">
-  {% if {{include.href}} == null %}
-    <h1>{{include.title}}  <sup>({{include.language}})</sup></h1>
-  {% else %}
-    <a href="{{include.href}}" target="_blank"> <h1>{{include.title}}  <sup>({{include.language}})</sup></h1></a>
-  {% endif %}
-</div>
 <div class="partner-item">
+  <div class="partner-title thesis-title">
+    {% if {{include.href}} == null %}
+      <h1 style="font-weight:400 !important;">{{include.title}}  <sup>({{include.language}})</sup></h1>
+    {% else %}
+      <a href="{{include.href}}" target="_blank"> <h1>{{include.title}}  <sup>({{include.language}})</sup></h1></a>
+    {% endif %}
+  </div>
   <div class="partner-detail">
-    <div class="partner-description">
-      {{include.description}}
+    <div class="description descriptionThesis">
+      {{include.description}}<br/>
     </div>
   </div>
-  <div class="description">
-    <br class="horizontal-separator" />
+  <div class="membersInThesis">
     {% for person in include.personList %}
       {% capture thesisNameinArray %}{{person.thesisTitle}}{% endcapture%}
       {% if thesisNameinArray == include.title %}
         {% assign url= person.person | remove: "http://sda.tech/" %}
-        <div class="membersofProject">
           <div class="chip">
             <img class="img-circle-small" src="{{person.personImage}}" alt="Person" width="96" height="96">
             <a href="../../{{url}}">{{person.personName}}</a>
           </div>
-        </div>
       {% endif %}
     {% endfor %}
   </div>
 </div>
 <!-- NO RULE FOR LAST ELEMENT -->
-{% if include.last != 1 %}
+<!-- {% if include.last != 1 %}
   <hr />
-{% endif %}
+{% endif %} -->

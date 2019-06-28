@@ -20,7 +20,7 @@ temp: temp value
 titleWithAcronym: Smart Data Analytics (SDA)
 author: Institut für Informatik III
 email: jens.lehmann@cs.uni-bonn.de
-copyrights: Smart Data Analytics, © 2018
+copyrights: Smart Data Analytics, © 2019
 addressLineOne: Endenicher Allee 19a
 addressLineTwo: 53115 Bonn, Germany
 phone: +49 228 73-4315
@@ -50,7 +50,7 @@ linkedin_username: SDA
 activePeople: All Members
 activeGroup: Distributed Semantic Analytics
 currentSemester: Summer
-currentYear: 2018
+currentYear: 2019
 leader: Prof.Dr. Jens Lehmann
 leaderHomePage: http://jens-lehmann.org/
 
@@ -111,10 +111,11 @@ jekyll_rdf:
         "http://sda.tech/contact" : "contact.html"
         #Thesis
         "http://sda.tech/thesis" : "thesis.html"
-        "http://sda.tech/Thesis/bachelorthesis" : "bachelorthesis.html"
-        "http://sda.tech/Thesis/masterthesis" : "masterthesis.html"
-        "http://sda.tech/Thesis/ongoingthesis" : "ongoingthesis.html"
-        "http://sda.tech/Thesis/frequentlyaskedquestions" : "faqthesis.html"
+        "http://sda.tech/Thesis/bachelorthesis" : "thesisBachelor.html"
+        "http://sda.tech/Thesis/masterthesis" : "thesisMaster.html"
+        "http://sda.tech/Thesis/ongoingthesis" : "thesisOngoing.html"
+        "http://sda.tech/Thesis/completedthesis" : "thesisCompleted.html"
+        "http://sda.tech/Thesis/frequentlyaskedquestions" : "thesisFaq.html"
         #Projects
         "http://sda.tech/project" : "projectmain.html"
         "http://sda.tech/Project/fundedprojects" : "projectFunded.html"

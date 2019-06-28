@@ -1,0 +1,29 @@
+<div class="pagination-footer">
+  <div class="footer-left">
+    {% if include.fromAll == 1 %}
+      {% if include.previousPerson != null and include.previousPerson != "" and include.previousPerson != include.name %}
+        <a onclick="setBoolFromAllToDetailPerson('true', '../../{{include.previousUrl}}' )"><h2><i class="fa fa-chevron-left" style="padding-right:16px; vertical-align:middle;" aria-hidden="true"></i> {{include.previousPerson}}</h2></a>
+      {% endif %}
+    {% endif %}
+    {% if include.fromAll != 1 %}
+      {% if include.previousPerson != null and include.previousPerson != "" and include.previousPerson != include.name %}
+        <a href="../../{{include.previousUrl}}"><h2><i class="fa fa-chevron-left" style="padding-right:16px; vertical-align:middle;" aria-hidden="true"></i> {{include.previousPerson}}</h2></a>
+      {% endif %}
+    {% endif %}
+  </div>
+  <div class="footer-center">
+    <a href="#personTitle"><h2>{{include.name}}</h2></a>
+  </div>
+  <div class="footer-right">
+    {% if include.fromAll == 1 %}
+      {% if include.nextPerson != null and include.nextPerson != "" and include.nextPerson != include.name %}
+        <a onclick="setBoolFromAllToDetailPerson('true', '../../{{include.nextUrl}}' )"><h2>{{include.nextPerson}} <i class="fa fa-chevron-right" style="padding-left:16px; vertical-align:middle;" aria-hidden="true"></i></h2></a>
+      {% endif %}
+    {% endif %}
+    {% if include.fromAll != 1 %}
+      {% if include.nextPerson != null and include.nextPerson != "" and include.nextPerson != include.name %}
+        <a href="../../{{include.nextUrl}}"><h2>{{include.nextPerson}} <i class="fa fa-chevron-right" style="padding-left:16px; vertical-align:middle;" aria-hidden="true"></i></h2></a>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>

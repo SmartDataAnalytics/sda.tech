@@ -10,18 +10,17 @@ deactivateHeader();
 activateHeader('{{page.navigationdiv}}');
 </script>
 
+{% include partnerQuerries.html %}
+
 <div class="borderAll">
   <!-- Presenting the PARTNERS -->
   <article class="post">
     <div class="pagination">
-      {% include partnerHeader.html active="Academic Partners"%}
+      {% include partnerHeader.html active="Academic Partners" total=academicPartnersArray.size %}
     </div>
-      <!-- FOR GETTING ASSOCIATED PROJECTS -->
-      {% capture query %} SELECT ?partners ?project ?partnername ?name ?image  WHERE{ ?partners a sdatech:Partner . ?partners foaf:currentProject ?project . OPTIONAL { ?partners foaf:name ?partnername } . ?project rdfs:label ?name  . OPTIONAL { ?project foaf:logo ?image } }
-      {% endcapture %} {% assign partnersWithProjects = page.rdf | sparql_query: query %} {% assign length2 = partners | size %}
       <div class="partner-items content-people">
         {% include partnerContent.html active="academic"%}
       </div>
-      <br class="horizontal-separator2" />
+      {% include partnersFooter.html %}
   </article>
 </div>

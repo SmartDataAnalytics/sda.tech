@@ -1,0 +1,29 @@
+---
+rdf_prefix_path: sda.tech.pref
+layout: default
+navigationdiv: Thesis
+---
+
+<script>
+setTitle('Master Theses', '{{site.title | escape}}');
+deactivateHeader();
+activateHeader('{{page.navigationdiv}}');
+</script>
+
+{% include toggleThesisTypes.html %}
+{% include toggleBachelorThesis.html %}
+{% include toggleMasterThesis.html %}
+{% include thesisQuerries.html %}
+
+{% assign totalNumber=openMasterThesis.size | plus:archivedMasterThesis.size %}
+
+<!-- Presentation of thesis Items  -->
+<div class="borderAll">
+  <article class="post">
+    <!--Thesis Header  -->
+    {% include thesisHeader.html active="Master Thesis" total=totalNumber %}
+    <!--Thesis Contetnt Types  -->
+    {% include thesisContent.html active="master" %}
+  </article>
+  {% include thesisFooter.html %}
+</div>

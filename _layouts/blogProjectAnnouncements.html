@@ -4,105 +4,98 @@ layout: default
 navigationdiv: Blog
 ---
 
-<div class="borderAll">
-  <article class="post">
-    <div class="pagination">
-      {% include blogHeader.html active="Project Announcements"%}
-    </div>
+{% include blogQuerries.html %}
 
-    {% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sdablog:projectannouncements . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image . ?blog sioc:content ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign blogposts = page.rdf | sparql_query: query %}
+{% capture title %} {{ page.rdf | rdf_property: 'rdfs:label' }} {% endcapture %}
+<div class="borderAll">
+  <div class="pagination">
+    {% include blogHeader.html active="Project Announcements" total=projectAnnouncementsArray.size %}
+  </div>
+  <article class="post">
     <div class="scrollmenu">
-      {% for post in blogposts %}
+      {% for post in projectAnnouncementsArray %}
         {% assign url= post.blog | remove: "http://sda.tech/" %}
         <a href="../../{{url}}"><img src="{{post.image}}" style="height:100px;width:200px;"><br/>
         <div class="posttitle">{{post.title}}</div></a>
       {% endfor %}
     </div>
-
     <br class="horizontal-separator2"/>
-
-    <!-- post -->
-
     <div class="pagination3" id="oInput">
-    {% for post in blogposts %}
+    {% for post in projectAnnouncementsArray %}
       {% assign url= post.blog | remove: "http://sda.tech/" %}
-      <div class="postentry" id="page{{ forloop.index }}">
+      <div class="postentry postentrytiles" id="page{{ forloop.index }}">
         <a href="../../{{url}}"><p style="margin-top:25px;"><font size="5">{{post.title}}</font></p></a>
         <span style="color: #666666;"> &#128467; {{post.date}} &nbsp;&nbsp; &#x270D; {{post.creator}}</span>
         <br/><br/>
         <p><img src="{{post.image}}" style="float:left;height:180px;width:230px;padding:30px;">{{post.content}}</p>
-        <br/><hr style="text-align:center;">
+        <br/>
       </div>
     {% endfor %}
     </div>
-
-    <button href="#" id="prev" class="previous"><< Previous</button>
-    <button href="#" id="next" class="next" >Next >></button>
-
-    <hr style="width:100%;background:transparent;">
-    <br class="horizontal-separator2" />
   </article>
+  {% include blogPostFooter.html %}
 </div>
 
 <script>
-deactivateHeader();
-activateHeader('{{page.navigationdiv}}');
+  setTitle('{{title}}', '{{site.title | escape}}');
+  deactivateHeader();
+  activateHeader('{{page.navigationdiv}}');
 
-var page = 1;
+  var page = 1;
 
-function showPage(page) {
-    $('.pagination3 .postentry:not(#page'+page+')').hide();
-    $('.pagination3 .postentry#page'+page).show();page++;
-    $('.pagination3 .postentry#page'+page).show();page++;
-    $('.pagination3 .postentry#page'+page).show();page++;
-    $('.pagination3 .postentry#page'+page).show();page++;
-    $('.pagination3 .postentry#page'+page).show();
-}
+  function showPage(page) {
+      $('.pagination3 .postentry:not(#page'+page+')').hide();
+      $('.pagination3 .postentry#page'+page).show();page++;
+      $('.pagination3 .postentry#page'+page).show();page++;
+      $('.pagination3 .postentry#page'+page).show();page++;
+      $('.pagination3 .postentry#page'+page).show();page++;
+      $('.pagination3 .postentry#page'+page).show();
+  }
 
-function prevPage() {
-    if (page-5 <= 1) {
-      page = page - 5;
-      $('#prev').hide();
-      $('#next').show();
-    }
-    else if (page-10 <= 1) {
-      page = page - 5;
-      $('#next').show();
-    }
-    else {
-        $('#next').show();
+  function prevPage() {
+      if (page-5 <= 1) {
         page = page - 5;
-    }
-    window.scrollTo(0, 0);
-    showPage(page);
-}
+        $('#prev').hide();
+        $('#next').show();
+      }
+      else if (page-10 <= 1) {
+        page = page - 5;
+        $('#next').show();
+      }
+      else {
+          $('#next').show();
+          page = page - 5;
+      }
+      window.scrollTo(0, 0);
+      showPage(page);
+  }
 
-function nextPage() {
-    if (page+5 >= $('.pagination3 .postentry').length) {
-      page = page + 5;
-      $('#prev').show();
-    }
-    else if (page+10 >= $('.pagination3 .postentry').length) {
+  function nextPage() {
+      if (page+5 >= $('.pagination3 .postentry').length) {
         page = page + 5;
-        $('#next').hide();
         $('#prev').show();
       }
-    else {
-        $('#prev').show();
-        page = page + 5;
-    }
-    window.scrollTo(0, 0);
-    showPage(page);
-}
+      else if (page+10 >= $('.pagination3 .postentry').length) {
+          page = page + 5;
+          $('#next').hide();
+          $('#prev').show();
+        }
+      else {
+          $('#prev').show();
+          page = page + 5;
+      }
+      window.scrollTo(0, 0);
+      showPage(page);
+  }
 
-$(document).ready(function() {
-    showPage(page);
+  $(document).ready(function() {
+      showPage(page);
 
-    $('#prev').click(prevPage);
-    $('#prev').hide();
-    $('#next').click(nextPage);
-    if ($('.pagination3 .postentry').length < 5) {
-      $('#next').hide();
-    }
-});
+      $('#prev').click(prevPage);
+      $('#prev').hide();
+      $('#next').click(nextPage);
+      if ($('.pagination3 .postentry').length < 5) {
+        $('#next').hide();
+      }
+  });
 </script>

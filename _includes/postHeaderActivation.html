@@ -1,0 +1,101 @@
+<script>
+var btn;
+// Snack Bar Call Function
+function snackbarCall()
+{
+  var x = document.getElementById("snackbar3");
+  x.className = "show";
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+}
+
+document.onreadystatechange = function(e)
+{
+    if ( document.readyState === 'loading' )
+    {
+
+    }
+
+    if ( document.readyState === 'interactive' )
+    {
+        //dom is ready, window.onload fires later
+        setTitle('{{title}}', '{{site.title | escape}}');
+        deactivateHeader();
+        activateHeader('{{page.navigationdiv}}');
+
+        if( getBoolFromAllToDetailPost() == 'true' )
+        {
+          document.getElementById('allPostHeader').style.display = 'block';
+          document.getElementById('particularPostHeader').style.display = 'none';
+          document.getElementById('footer-particularPost').style.display = 'none' ;
+          document.getElementById('footer-allPost').style.display = 'block' ;
+          document.getElementById('secondaryNavPostAll').style.display = 'block';
+          document.getElementById('secondaryNavParticularPost').style.display = 'none';
+
+          if(document.getElementById('allPostHeader').style.display == 'block' && document.getElementById('particularPostHeader').style.display )
+            localStorage.setItem("boolFromAllToDetailPost", 'false' );
+
+        }else {
+          document.getElementById('allPostHeader').style.display = 'none';
+          document.getElementById('particularPostHeader').style.display = 'block';
+          document.getElementById('footer-particularPost').style.display = 'block' ;
+          document.getElementById('footer-allPost').style.display = 'none' ;
+          document.getElementById('secondaryNavPostAll').style.display = 'none';
+          document.getElementById('secondaryNavParticularPost').style.display = 'block';
+        }
+
+        btn = document.querySelector('.toggle-menu');
+        btn.addEventListener('click', snackbarCall );
+    }
+
+    if ( document.readyState === 'complete' )
+    {
+        // Toggle functionality for Person Secondary Navigation
+        btn.removeEventListener('click', snackbarCall ) ;
+        var icon = document.getElementById('posttoggleicon');
+        var hint = document.getElementById('postSecondaryNav');
+        var personTableRow = document.getElementById('postTableRow');
+        var active = document.querySelector("#post");
+        var content = document.getElementById('post');
+
+        var heightPerson = content.clientHeight;
+        var height = hint.clientHeight;
+        var width = hint.clientWidth;
+        var widthTable = ( personTableRow.clientWidth * 25 ) / 100 ;
+        var heightPerson = content.clientHeight;
+
+
+        console.log(width + 'x' + height);
+        console.log("HP", heightPerson);
+        // initialize them (within hint.style)
+        // hint.style.height = heightPerson + 'px';
+        // hint.style.width = width + 'px';
+
+        btn.addEventListener('click', function(){
+          if( hint.style.display == 'none' ){
+
+            active.classList.add("active-nav");
+            hint.style.display = 'inline-block';
+            icon.classList.add("icon-active");
+            hint.style.height = heightPerson + 'px';
+            hint.style.opacity = '1';
+            hint.style.width = widthTable + 'px';
+
+            heightPerson = content.clientHeight;
+            hint.style.height = heightPerson + 'px' ;
+
+          }
+          else{
+            hint.style.opacity = 0;
+            hint.style.height = '0';
+            hint.style.width = '0';
+
+            active.classList.remove("active-nav");
+            icon.classList.remove("icon-active");
+            hint.style.display = 'none';
+          }
+
+        });
+    }
+};
+
+</script>

@@ -9,12 +9,16 @@ setTitle('PhD Students', '{{site.title | escape}}');
 deactivateHeader();
 activateHeader('{{page.navigationdiv}}');
 </script>
+
+{% include personQuerries.html %}
+
 <div class="borderAll" >
   <div class="pagination">
-    {% include peopleHeader.html active ="PhD Students" %}
+    {% include peopleHeader.html active ="PhD Students" total=phdStudentsArray.size %}
   </div>
   <div class="content-people">
-    {% include peopleContent.html active ="Phd" %}
+    {% include peopleContent.html active ="Phd"  %}
   </div>
-  <br class="horizontal-separator" />
+  <div class="pagination-footer">
+  </div>
 </div>

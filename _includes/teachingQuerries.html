@@ -1,0 +1,4 @@
+<!--  -->
+{% capture query %} SELECT ?course ?short ?name ?desc ?id ?page ?semester ?year ?sdate ?edate WHERE{ ?course a sdatech:Course . ?course rdfs:label ?short . ?course dct:title ?name . ?course ex:description ?desc . ?course sda:id ?id . ?course foaf:homepage ?page . ?course sda:semester ?semester . ?course sda:year ?year . } order by asc(str(?id)) {% endcapture %} {% assign resultset = page.rdf | sparql_query: query%}
+<!--  -->
+{% capture querytwo %} SELECT ?course ?short ?id ?semester ?year ?maintainer ?image ?name WHERE{ ?course a sdatech:Course . ?course rdfs:label ?short . ?course sda:id ?id . ?course sda:maintainer ?maintainer . ?maintainer foaf:name ?name . OPTIONAL { ?maintainer foaf:depiction ?image } . ?course sda:semester ?semester . ?course sda:year ?year . } {% endcapture %} {% assign resultset2 = page.rdf | sparql_query: querytwo %}

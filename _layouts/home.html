@@ -10,26 +10,14 @@ activateHeader('{{page.navigationdiv}}');
 </script>
 
 <div class="home">
-  <!-- Main informative content -->
-  <br class="horizontal-separator" />
-  <!--<article class="post ">-->
-    <!--  maininfo-->
     <header class="post-header">
       <h1 class="post-title">{{ site.title | escape }}</h1>
-    <!-- <b>Disclaimer: <i>The site is under development.</i></b> -->
     </header>
-    <br class="horizontal-separator" />
     <!-- Query to Get the department leaders ?Person dbo:leader ?leader . -->
     {% capture query %} SELECT ?Person ?name ?leader WHERE{ ?Person a foaf:Person . ?Person foaf:name ?name .  } {% endcapture %} {% assign resultset = page.rdf | sparql_query: query %}
-    <div class="post-content">
+    <div class="post-content main-description">
       The
       <b>{{site.titleWithAcronym}}</b> research group, led by <a href="{{site.leaderHomePage}}">{{site.leader}}</a>
-      <!-- Logic for presenting a leader or multiple leaders -->
-      <!-- {% assign numberOfLeaders = resultset.size %} {% if numberOfLeaders
-      <=1 %} {% for result in resultset %} {{result.name}}, {% endfor %} {% elsif numberOfLeaders> 1 %} {% assign count = 1 %} {% assign secondlast = numberOfLeaders %} {% assign secondlast = secondlast | minus:1 %}
-        {% for result in resultset %} {% if count == secondlast %} {{result.name}} and {% elsif count
-        <=numberOfLeaders %} {{result.name}}, {% else %} the group leader {% endif %} {% assign count=count | plus: 1 %} {% endfor
-          %} {% else %} the group leader {% endif %} -->
           has members from the <a href="{{site.eisHomePage}}">{{site.eisName}}</a> at the
           <a href="{{site.uniBonnHomePage}}">{{site.uniBonnName}}</a>, the
           <a href="{{site.fraunhoferHomePage}}">{{site.fraunhoferDepartmentName}}</a> and the
@@ -37,30 +25,18 @@ activateHeader('{{page.navigationdiv}}');
           structured knowledge ("smart data"). The group aims at covering the full spectrum of research including theoretical
           foundations, algorithms, prototypes and industrial applications.
     </div>
-    <br class="horizontal-separator2" />
-    <!--Heat Map Area for representing research areas.  -->
-    <!-- <div id="basic"> -->
-    <!-- HeatMap goes into this div id, called by the script heatmaptechnologies.js -->
-    <!-- </div> -->
-     {% include slider.html %}
-    <!-- <div class="post-content quote-alignment">
-      <q>Our researchers and developers are working continoulsy on emerging technolgies and research as shown above.</q>
-    </div> -->
-  <!-- </article> -->
-  <br class="horizontal-separator" />
-  <br class="horizontal-separator" />
+    <div class="main-slider">
+      {% include slider.html %}
+    </div>
   <div class="warp">
-  <!-- Icon representation of Group and the Activities -->
-  <!-- <article class="post backgroundMain"> -->
-    <!-- class to be added back if like old style content-container-separation -->
     <!--Query to GET all the groupnames and metaInformation  -->
     {% capture query %} SELECT ?group ?description ?imageclass ?longdescription WHERE{ ?group a aiiso:ResearchGroup . ?group rdfs:label ?description . ?group dct:abstract ?longdescription.  ?group sda:imageclass ?imageclass . } {% endcapture %} {% assign groups = page.rdf | sparql_query: query %}
     <!--Query to GET associated leaders with the Groupnames-->
     {% capture query %} SELECT ?group ?description ?leader ?leadername ?leaderimage WHERE{ ?group a aiiso:ResearchGroup . ?group rdfs:label ?description .  optional { ?group dbo:leader ?leader }. optional { ?leader foaf:name ?leadername }. optional { ?leader  foaf:depiction ?leaderimage }. } {% endcapture %} {% assign groupsWithdbo = page.rdf | sparql_query: query %}
     <header class="post-header">
-      <h2 class="post-title">Specialized Groups Working under SDA</h2>
+      <h2 class="post-title post-title-secondary">Specialized Groups Working under SDA</h2>
     </header>
-    <br class="horizontal-separator" /> {% for group in groups %} {% assign url= group.group | remove: "http://sda.tech/" %} {% capture imageClass %}{{group.imageclass}}{% endcapture %} {% capture name %}{{group.description}}{% endcapture %} {% capture longdescription %}{{group.longdescription}}{% endcapture %}  {% capture leader %}{{group.leadername}}{% endcapture %} {% assign
+    {% for group in groups %} {% assign url= group.group | remove: "http://sda.tech/" %} {% capture imageClass %}{{group.imageclass}}{% endcapture %} {% capture name %}{{group.description}}{% endcapture %} {% capture longdescription %}{{group.longdescription}}{% endcapture %}  {% capture leader %}{{group.leadername}}{% endcapture %} {% assign
     image=imageClass | append:' fa-3x' %}
     <div class="groupCard">
       <div class="groupImage">
@@ -74,10 +50,9 @@ activateHeader('{{page.navigationdiv}}');
         <div class="groupAbstract">
           <h4>{{group.longdescription}}</h4>
         </div>
-       <!-- <b>Lead by:</b> -->
         <br/>
         <div class="groupLeaders">
-            <h3 style="text-align:left;color:black;margin-left:24px;">Group Leader</h3>
+            <h3 style="text-align:left;color:#424242;margin-left:24px;">Group Leader</h3>
             {% for leaders in groupsWithdbo %}
               {% capture nameInDbo %}{{leaders.description}}{% endcapture %}
                 {% if name == nameInDbo  %}
@@ -92,54 +67,43 @@ activateHeader('{{page.navigationdiv}}');
       </div>
     </div>
     {% endfor %}
-  </div><br>
-  <!-- </article> -->
-  <br class="horizontal-separator" />
-  <br class="horizontal-separator" />
-  <!--Blog posts excerpt: List of lates three or four blog posts  -->
-  <!-- <article class="post backgroundMain "> -->
-    <!-- blogAndTweetPosts -->
+  </div>
+  <div class="section-break">
+  </div>
+  <div class="">
     <header class="post-header">
-     <h2 class="post-title">Keep Connected with Our Posts</h2>
-   </header>
-   <br class="horizontal-separator" />
-   <div class="blogAndTweet" style="max-height: 1000px;">
-     <div class="twoCol1">
-       <!-- using the split filter -->
-       <div class="blogHead">
-         <h1>Blog Posts</h1>
-       </div>
-       <div class="scroll">
-         {% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sioc:Post . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image  . ?blog sioc:abstract ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign blogposts = page.rdf | sparql_query: query %}
-         {% for post in blogposts %}
-         {% assign url= post.blog | remove: "http://sda.tech/" %}
-         <div class="blogItem">
-           <h2><a href="../../{{url}}">{{ post.title }}</a></h2>
-             <small><span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span></small>
-             {{ post.content }}
-             <a href="../../{{url}}">Read more</a>
-           </li>
-         </div>
-         {% endfor %}
-       </div>
-     </div>
-     <div class="twoCol2">
-       <div class='jekyll-twitter-plugin' style="max-height: 1000px; overflow-y: scroll;">
-         {% twitter https://twitter.com/sda_research maxwidth=500 align=right link-color=#0896fe %}
-       </div>
-     </div>
-   </div>
-  <!-- </article> -->
-  <br class="horizontal-separator" />
-  <br class="horizontal-separator" />
-  <!-- <article class="post backgroundMain ">
-    <header class="post-header">
-      <h2 class="post-title">Our Group is Funded By </h2>
-      <br class="horizontal-separator" />
-      <div class="cardItem">
-        Rohan Asmat
-      </div>
+      <h2 class="post-title post-title-secondary">Keep Connected with Our Posts</h2>
     </header>
-  </article> -->
-  <br class="horizontal-separator2" />
+    <div class="blogAndTweet" style="max-height: 1000px;">
+      <div class="twoCol1">
+        <!-- using the split filter -->
+        <div class="blogHead">
+          <h1>Blog Posts</h1>
+        </div>
+        <div class="scroll">
+          {% capture query %} SELECT ?blog ?title ?creator ?date ?image ?content WHERE{ ?blog a sioc:Post . ?blog dct:title ?title . ?blog dct:creator ?person . ?person foaf:name ?creator . ?blog dct:created ?date . ?blog foaf:depiction ?image  . ?blog sioc:abstract ?content .} ORDER BY DESC(?date) {% endcapture %} {% assign blogposts = page.rdf | sparql_query: query %}
+          {% for post in blogposts %}
+          {% assign url= post.blog | remove: "http://sda.tech/" %}
+          <div class="blogItem">
+            <h2><a href="../../{{url}}">{{ post.title }}</a></h2>
+              <small><span class="post-date">{{ post.date | date: "%B %d, %Y" }}</span></small>
+              {{ post.content }}
+              <a href="../../{{url}}">Read more</a>
+            </li>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="twoCol2">
+        <div class='jekyll-twitter-plugin' style="max-height: 1000px; overflow-y: scroll;">
+          {% twitter https://twitter.com/sda_research maxwidth=500 align=right link-color=#0896fe %}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="section-break">
+
+  </div>
+  <div class="pagination-footer">
+  </div>
 </div>

@@ -1,29 +1,24 @@
-<br class="horizontal-separator"/>
-<div class="partner-title">
-  <a href="{{include.href}}" target="_blank"> <h1>{{include.title}}</h1></a>
-</div>
 <div class="partner-item">
-  <div class="image"> <img style="width: 200px;" src="{{include.image}}" alt="{{iclude.title}}"> </div>
-  <div class="description">
-    {{include.description}}<br>
-    We are partner in the following project(s) with {{include.name}}:
-    <br><br class="horizontal-separator" />
-    <div class="membersofProject">
-      {% capture query %} SELECT ?partner ?project ?projectname ?image WHERE {
-        <{{include.partnerId}}> foaf:currentProject ?project . ?project rdfs:label ?projectname . ?project foaf:depiction ?image .
-      }{% endcapture %} {% assign projectList = page.rdf | sparql_query: query %}
-      {% for projects in projectList %}
-        {% assign url= projects.project | remove: "http://sda.tech/" %}
-        <div class="chip">
-          <img class="img-circle-small" src="{{projects.image}}" alt="Project" width="96" height="96">
-          <a href="../../{{url}}">{{projects.projectname}}</a>
-        </div>
-      {% endfor %}
+  <div class="partner-title">
+    <a href="{{include.href}}" target="_blank"> <h1>{{include.title}}</h1></a>
+  </div>
+  <div class="partner-content-container">
+    <div class="image"><a href="{{include.href}}"><img style="width: 200px;" src="{{include.image}}" alt="{{iclude.title}}"></a></div>
+    <div class="description">
+      {{include.description}}<br>
+      We are <strong>partner </strong>in the following project(s) with {{include.name}}: <br>
+      <div class="membersofProject projectInPartners">
+        {% capture query %} SELECT ?partner ?project ?projectname ?image WHERE {
+          <{{include.partnerId}}> foaf:currentProject ?project . ?project rdfs:label ?projectname . ?project foaf:depiction ?image .
+        }{% endcapture %} {% assign projectList = page.rdf | sparql_query: query %}
+        {% for projects in projectList %}
+          {% assign url= projects.project | remove: "http://sda.tech/" %}
+          <div class="chip">
+            <img class="img-circle-small" src="{{projects.image}}" width="96" height="96">
+            <a href="../../{{url}}">{{projects.projectname}}</a>
+          </div>
+        {% endfor %}
+      </div>
     </div>
   </div>
-  <br class="horizontal-separator"/>
 </div>
-<!-- NO RULE FOR LAST ELEMENT -->
-{% if include.last != 1 %}
-  <hr />
-{% endif %}

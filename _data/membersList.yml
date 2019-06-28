@@ -1,0 +1,236 @@
+- name: lehmann
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/lehmann.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: ali
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/ali.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: bader
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/bader.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: bajraktari
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/bajraktari.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: banerjee
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/banerjee.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: betancourt
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/betancourt.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: bin
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/bin.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: bozorg
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/bozorg.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: buhmann
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/buhmann.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: chakraborty
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/chakraborty.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: chaudhuri
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/chaudhuri.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: chawla
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/chawla.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: collarana
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/collarana.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: dong
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/dong.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: dubey
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/dubey.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: elias
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/elias.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: esteves
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/esteves.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: fathalla
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/fathalla.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: fischer
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/fischer.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: galkin
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/galkin.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: garacia
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/garacia.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: gimnez
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/gimnez.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: grangelgonzales
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/grangelgonzales.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: graux
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/graux.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: haarmann
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/haarmann.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: halilaj
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/halilaj.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: hassan
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/hassan.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: hebaIbrahim
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/hebaIbrahim.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: hernandez
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/hernandez.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: hoffner
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/hoffner.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: ibrahim
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/ibrahim.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: jabeen
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/jabeen.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: kashiparekh
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/kashiparekh.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: kassawat
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/kassawat.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: kaufmann
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/kaufmann.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: khan
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/khan.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: kister
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/kister.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: kniesel
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/kniesel.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: kumar
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/kumar.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: lange
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/lange.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: lohmann
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/lohmann.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: lukovnikov
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/lukovnikov.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: lytra
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/lytra.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: maheswari
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/maheshwari.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: maleshkova
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/maleshkova.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: mami
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/mami.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: mirza
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/mirza.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: modi
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/modi.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: mulang
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/mulang.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: musyaffa
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/musyaffa.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: napolitano
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/napolitano.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: nayyeri
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/nayyeri.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: nedelchev
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/nedelchev.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: nejad
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/nejad.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: neitzsche
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/neitzsche.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: orlandi
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/orlandi.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: petersen
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/petersen.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: petzka
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/petzka.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: qu
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/qu.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: reddy
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/reddy.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: reimann
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/reimann.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: roa
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/roa.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: rose
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/rose.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: rula
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/rula.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: sadeghi
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/sadeghi.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: scerri
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/scerri.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: sejdiu
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/sejdiu.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: sherif
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/sherif.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: sibarani
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/sibarani.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: singh
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/singh.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: stadler
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/stadler.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: thakkar
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/thakkar.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: trivedi
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/trivedi.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: vahdati
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/vahdati.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: westphal
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/westphal.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: wiens
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/wiens.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: xu
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/xu.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: yazdi
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/yazdi.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5
+
+- name: zafar
+  bibbase: https://raw.githubusercontent.com/SmartDataAnalytics/sda.tech/mergeLayoutFeature/_publications/zafar.sda.bib&jsonp=1&fullnames=1&theme=side&token=8fdfccb91fb8675707dcb9b6ae18c8f5

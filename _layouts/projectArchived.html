@@ -11,11 +11,15 @@ deactivateHeader();
 activateHeader('{{page.navigationdiv}}');
 </script>
 
+{% include projectQuerries.html %}
+
 <div class="borderAll">
   <div class="pagination">
-    {% include projectHeader.html active="Archived Projects" %}
+    {% include projectHeader.html active="Archived Projects" total=archiveds.size %}
   </div>
   <div class="projects content-people clear-padding">
     {% include projectContent.html active="archProjectList"%}
+  </div>
+  <div class="pagination-footer">
   </div>
 </div>
